@@ -16,7 +16,7 @@ const Login = () => {
             // console.log(re);
             // const user = re.user;
             // console.log(user);  
-            setGoogleSignIn(true); 
+            setGoogleSignIn(true);  
         })
         // .then(
         //     navigate("/admin")
