@@ -1,9 +1,13 @@
 .logc{
-    background-image: url("../images/luke-chesser-pJadQetzTkI-unsplash.jpg");
+    /* background-image: url("../images/luke-chesser-pJadQetzTkI-unsplash.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: cover ;
+    background-size: cover ; */
+    background: #00c6ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 }
 
 /* .login-container{
@@ -46,8 +50,8 @@
 }
 .login-form-2 .btnSubmit{
     font-weight: 600;
-    color: #0062cc;
-    background-color: #fff;
+    /* color: #0062cc;
+    background-color: #fff; */
 }
 .login-form-2 .ForgetPwd{
     color: #fff;

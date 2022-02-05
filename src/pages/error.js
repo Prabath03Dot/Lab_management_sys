@@ -1,6 +1,6 @@
 const Error = () => {
     return ( 
-        <div>svkvjskjvnskjvskjv skj</div>
+        <div>404</div>
      );
 }
  

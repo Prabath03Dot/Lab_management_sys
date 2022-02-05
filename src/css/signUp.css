@@ -1,0 +1,37 @@
+.logc{
+    /* background-image: url("../images/luke-chesser-pJadQetzTkI-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover ; */
+    background: #00c6ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+/* .frxd{
+    padding:100px;
+    
+} */
+
+/* .fe1{
+    padding-bottom:200px;
+} */
+
+/* .logx{
+    align-items:center;
+    padding-top:200px;
+    position:center;
+    position:center;
+    align-items:center;
+    justify-items:center;
+    ;
+    
+} */
+
+.fg{
+    max-width:1000px;
+    max-height:1000px;
+    margin-top:140px;
+}

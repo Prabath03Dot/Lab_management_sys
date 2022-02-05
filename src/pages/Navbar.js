@@ -1,11 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container' 
 import '../css/Navabr.css';
-
+import { useUserAuth } from "../Context/userAuthContext";
+import { useState } from "react";
+import { onAuthStateChanged,getAuth } from "firebase/auth";
 
 const NavBar = () => {
-    return ( 
+    // const navigate = useNavigate();
+    // const auth = getAuth();
+    // const {user, logOut } = useUserAuth();
+    
+    // const handleLogout =  async () => {
+    //     try{
+    //         await logOut();
+    //         navigate("/signup");
+            
+    //     }catch(err){
+    //         console.log(err.message)
+    //     }
+    // }
+
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //       console.log("user signed In");
+    //     } else {
+    //         console.log("user signed Out");
+    //     }
+    //   });
+
+    return (
+        
 <div>
     <div className=" bg-primary text-light border-primary">
     <div class="row border-primary">
@@ -30,9 +55,16 @@ const NavBar = () => {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
         <div className="d-flex">
-            <button type="button" className="btn btn-secondary mx-2 border border-0"><Link className="text-light text-decoration-none" to="login">Login</Link></button>
+        
+            {/* {auth.currentUser? <button type="button" onClick={handleLogout} className="btn btn-secondary mx-2 border border-0">Log Out</button> : <button type="button" className="btn btn-secondary mx-2 border border-0"><Link className="text-light text-decoration-none" to="/login" >Log In
+            </Link></button>
+            } */}
+            <button type="button" className="btn btn-secondary mx-2 border border-0"><Link className="text-light text-decoration-none" to="/login" >Log In
+            </Link></button>
             <form className="d-flex">
-                <input className="form-control me-2 border-0" type="search" placeholder="Search" aria-label="Search" />
+                <input className="form-control me-2 border-0" type="search" placeholder="Search" aria-label="Search" /> 
+                {/* {user && user.email} */}
+                
                 <button className="btn btn-outline-success border border-0" type="submit"><i class="bi bi-search"></i></button>
             </form>
         </div>
@@ -56,7 +88,7 @@ const NavBar = () => {
                 Tests
             </a>
             <ul className="dropdown-menu p-2 " aria-labelledby="navbarDropdownMenuLink">
-                <li><a className="dropdown-item drp " href="#">Find Test</a></li>
+                <li><Link className="dropdown-item drp " to="/findtest">Find Test</Link></li>
                 <li><a className="dropdown-item drp" href="#">Make Appoitment</a></li>
                 <li><a className="dropdown-item drp" href="#">Bulk Test</a></li>
             </ul>
@@ -115,3 +147,20 @@ const NavBar = () => {
 }
  
 export default NavBar;
+
+{/* {
+          if(user){
+            return <button type="button" className="btn btn-secondary mx-2 border border-0"><Link className="text-light text-decoration-none" to="login" onClick={handleLogout} >
+            </Link></button>
+          } else{
+            return <button>Login</button>
+          }
+        }
+            <button type="button" className="btn btn-secondary mx-2 border border-0"><Link className="text-light text-decoration-none" to="login" onClick={handleLogout} >
+            </Link></button> */}
+
+            {/* {auth.currentUser? <button type="button" className="btn btn-secondary mx-2 border border-0"><Link className="text-light text-decoration-none" onClick={handleLogout} >Log Out
+            </Link></button>: 
+            <button type="button" className="btn btn-secondary mx-2 border border-0"><Link className="text-light text-decoration-none" to="/login" >Log In
+            </Link></button>
+            } */}
