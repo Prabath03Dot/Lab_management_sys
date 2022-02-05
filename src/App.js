@@ -6,53 +6,36 @@ import Login from './pages/Login';
 import Admin from './pages/Admin';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useState } from 'react';
-import Error from './pages/error';
-
+import Error from './pages/Error';
+import SignUp from './pages/SignUp';
+import { UserAuthContextProvider } from './Context/userAuthContext';
+import MainHome from './pages/Mainhome';
+import ProtectedRoutes from './pages/ProtectedRoutes'
+import FindTest from './pages/tests/FindTest';
 function App() {
   
-    const [googleSignIn, setGoogleSignIn] = useState(true);
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      //const uid = user.uid;
-      // console.log(uid);
-      return setGoogleSignIn(true);
-      
-    } 
-    
-    setGoogleSignIn(false);
-    console.log(auth.onAuthStateChanged === 1);
-    
-});
+  return (
+      <Router>
+        <UserAuthContextProvider>
+        <Routes> 
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/findtest" element={<FindTest />}></Route>
 
-  if (googleSignIn === true) {
-    return (
-      <Router>
-  
-  <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/home" element={
+          <ProtectedRoutes>
+            <MainHome></MainHome>
+          </ProtectedRoutes>}>
+          </Route>
+          <Route path="*" element={<Error />}></Route>
         </Routes>
-  
+        </UserAuthContextProvider>
       </Router>
     );
-  }
-  else{
-    return (
-      <Router>
   
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/admin" element={<Admin />}></Route>
-        </Routes>
-  
-      </Router>
-    );
-  }
+
 
 }
 
