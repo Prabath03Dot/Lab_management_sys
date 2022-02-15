@@ -5,6 +5,8 @@ import Axios  from 'axios';
 import Table from 'react-bootstrap/Table'
 import { Link, useParams } from "react-router-dom";
 
+
+
 const Appmnt = () => {
     const [testList, setTestList] = useState([]);
     const { id } = useParams();
@@ -41,7 +43,7 @@ const Appmnt = () => {
                         <td className="text-center">{test.test_id} </td>
                         <td>{test.testName} </td>
                         <td className="text-center"><button value={test.test_id} className="btn btn-primary btn-sm px-3 text-light">
-                        <Link className="text-light" to={`/appmnt/${test.test_id}`}>Book test</Link>
+                        <Link className="text-light" to={`/appmnt/${test.test_id}`}>Checkout</Link>
                         </button></td>
                     </tr>  
              )
