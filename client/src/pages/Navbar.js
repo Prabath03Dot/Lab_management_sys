@@ -8,27 +8,6 @@ import { onAuthStateChanged,getAuth } from "firebase/auth";
 import Button from 'react-bootstrap/Button'
 
 const NavBar = () => {
-    // const navigate = useNavigate();
-    // const auth = getAuth();
-    // const {user, logOut } = useUserAuth();
-    
-    // const handleLogout =  async () => {
-    //     try{
-    //         await logOut();
-    //         navigate("/signup");
-            
-    //     }catch(err){
-    //         console.log(err.message)
-    //     }
-    // }
-
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) {
-    //       console.log("user signed In");
-    //     } else {
-    //         console.log("user signed Out");
-    //     }
-    //   });
 
     return (
         
@@ -93,7 +72,7 @@ const NavBar = () => {
             <ul className="dropdown-menu p-2 " aria-labelledby="navbarDropdownMenuLink">
                 <li><Link className="dropdown-item drp " to="/findtest">Find Test</Link></li>
                 <li><Link className="dropdown-item drp" to="/appmnt">Make Appoitment</Link></li>
-                <li><a className="dropdown-item drp" href="#">Bulk Test</a></li>
+                <li><Link className="dropdown-item drp" to="/bulk">Bulk Test</Link></li>
             </ul>
             </li>
 

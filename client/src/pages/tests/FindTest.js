@@ -33,22 +33,22 @@ const FindTest = () => {
     <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
     <div className="accordion-body">
     <div className="panel-body">
-<h3>Indication</h3>
-<p>This assay is used for evaluation of patients with suspected Sarcoidosis &amp; confirm Gaucher disease and Leprosy.</p>
-<h3 className="lh-lg">What "high" or "increased" may indicate</h3>
-<ul className="list list-disc">
-<li>Sarcoidosis</li>
-<li>Leprosy</li>
-<li>Gaucher disease</li>
-<li>Diabetic retinopathy</li>
-<li>Liver disease</li>
-<li>Hyperthyroidism</li>
-</ul>
-<h3>Sample</h3>
-<p>Plain clotted blood/CSF Immediately freeze separated serum.</p>
-<h3>Patient Preparation</h3>
-<p>Overnight fasting is preferred (11 - 12 hrs). Fasting is defined as no consumption of food or beverages other than water before blood collection.</p>
-</div>
+        <h3>Indication</h3>
+        <p>This assay is used for evaluation of patients with suspected Sarcoidosis &amp; confirm Gaucher disease and Leprosy.</p>
+        <h3 className="lh-lg">What "high" or "increased" may indicate</h3>
+        <ul className="list list-disc">
+        <li>Sarcoidosis</li>
+        <li>Leprosy</li>
+        <li>Gaucher disease</li>
+        <li>Diabetic retinopathy</li>
+        <li>Liver disease</li>
+        <li>Hyperthyroidism</li>
+        </ul>
+        <h3>Sample</h3>
+        <p>Plain clotted blood/CSF Immediately freeze separated serum.</p>
+        <h3>Patient Preparation</h3>
+        <p>Overnight fasting is preferred (11 - 12 hrs). Fasting is defined as no consumption of food or beverages other than water before blood collection.</p>
+    </div>
     </div>
     </div>
 </div>
@@ -99,27 +99,20 @@ const FindTest = () => {
     <div className="accordion-body">
     <div class="panel-body">
 <h3>Indication</h3>
-<p>This assay is useful for biochemical diagnosis and monitoring of intestinal carcinoid syndrome. It is an indicator of serotonin producing tumor.</p>
-<h3>Sample</h3>
-<p>24 hrs urine</p>
-<h3>Patient's Preparation</h3>
-<p>The patient should strictly avoid Banana, Kiwis, Walnut, Avocado, Eggplant, Pineapple, Plum, Tomato and Promethazine, Alcoholic beverages, Tea/Coffee, Tobacco and strenuous exercise at least 72 hrs before and during specimen collection. Drugs including</p>
-<ul className="list list-disc">
-<li>Fluorouracil</li>
-<li>Melphalan</li>
-<li>Phenothiazines</li>
-<li>Acetaminophen</li>
-<li>Guaifenesin</li>
-<li>Isoniazid</li>
-<li>MAO inhibitors</li>
-<li>Mephenesin</li>
-<li>Methenamine compounds</li>
-<li>Methocarbamol</li>
-<li>Methyldopa</li>
-<li>Phenothiazine</li>
-<li>Reserpine salicylates</li>
-<li>Tricyclic antidepressants</li>
+<p>Helps differentiate between primary and secondary adrenal insufficiency &amp; helps diagnose Cushing 's disease.</p>
+<h3>What "high" or "increased" may indicate</h3>
+<ul class="list list-disc">
+<li>Addison' s disease</li>
+<li>Cushing' s disease</li>
 </ul>
+<h3>What "low" or "decreased" may indicate</h3>
+<ul class="list list-disc">
+<li>Adrenal - cortex tumor</li>
+</ul>
+<h3>Sample</h3>
+<p>EDTA blood (Chilled tube) Obtain ice before draw for specimen transport.</p>
+<h3>Patient's Preparation</h3>
+<p>Draw blood between 6 -10 am Limit your physical activities for 10-12 hrs before the test. You may be put on a low carbohydrate diet for 2 days before. Alcohol (ethanol, whiskey, wine or beer) can also affect test results.</p>
 </div>
     </div>
     </div>

@@ -13,10 +13,9 @@ import MainHome from './pages/Mainhome';
 import ProtectedRoutes from './pages/ProtectedRoutes'
 import FindTest from './pages/tests/FindTest';
 import Appmnt from './pages/tests/Appmnt';
-import BookTest from './pages/BookTest';
+import BookTest from './pages/tests/BookTest';
 import "@stripe/stripe-js";
-import Success from './pages/tests/Sucsess';
-import Cancel from './pages/tests/Cancel';
+import BulkTest from './pages/tests/BulkTest';
 
 function App() {
   
@@ -31,8 +30,7 @@ function App() {
           <Route path="/findtest" element={<FindTest />}></Route>
           <Route path="/appmnt" element={<Appmnt />}></Route>
           <Route path="/appmnt/:id" element={<BookTest />}></Route>
-          <Route path="/appmnt/success" element={<Success />}></Route>
-          <Route path="/appmnt/cancel" element={<Cancel />}></Route>
+          <Route path="/bulk" element={<BulkTest />}></Route>
 
           <Route path="/home" element={
           <ProtectedRoutes>

@@ -102,8 +102,8 @@ const MainHome = () => {
             </a>
             <ul className="dropdown-menu p-2 " aria-labelledby="navbarDropdownMenuLink">
                 <li><Link className="dropdown-item drp " to="/findtest">Find Test</Link></li>
-                <li><a className="dropdown-item drp" href="#">Make Appoitment</a></li>
-                <li><a className="dropdown-item drp" href="#">Bulk Test</a></li>
+                <li><Link className="dropdown-item drp" href="/appmnt">Make Appoitment</Link></li>
+                <li><Link className="dropdown-item drp" to="/bulk">Bulk Test</Link></li>
             </ul>
             </li>
 

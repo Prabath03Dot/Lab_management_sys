@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 
 const testSchema = new mongoose.Schema({
     testName : String,
-    test_id: Number
+    test_id: Number,
+    test_details: String,
+    test_price: Number
 });
 
 const Test = mongoose.model('test_cat', testSchema);
