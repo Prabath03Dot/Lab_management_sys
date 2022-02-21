@@ -9,6 +9,7 @@ import setMinutes from "date-fns/setMinutes";
 import getHours from 'date-fns/getHours'
 import "react-datepicker/dist/react-datepicker.css";
 import {Link} from 'react-router-dom';
+//import currentHour from 'date-fns'
 
 const cardStyle = {
     style: {
@@ -44,7 +45,7 @@ export default function PayamentForm() {
       phoneNumber,
       email
     });
-    const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(), 0), 23));
+    const [startDate, setStartDate] = useState();
     var num = Math.floor(Math.random() * 90000) + 10000;
 
   const handleSubmit = async (e) => {
@@ -117,7 +118,7 @@ export default function PayamentForm() {
   
 
          {!success ? 
-        <form className="mx-auto justify-items-center align-items-center"  onSubmit={handleSubmit} id="payment-form">
+        <form  className="mx-auto justify-items-center align-items-center"  onSubmit={handleSubmit} id="payment-form">
             <fieldset className="FormGroup">
               <div className="row mb-3">
                   <label for="inputEmail1" className="col-sm-2 col-form-label">First Name</label>
@@ -151,6 +152,7 @@ export default function PayamentForm() {
                       onChange={(date) => setStartDate(date)}
                       showTimeSelect
                       minDate={new Date()}
+                      excludeOutOfBoundsTimes
                       timeFormat="HH:mm"
                       timeIntervals={60}
                       timeCaption="time"
@@ -168,17 +170,19 @@ export default function PayamentForm() {
                         setHours(setMinutes(new Date(), 0), 2),
                         setHours(setMinutes(new Date(), 0), 3),
                         setHours(setMinutes(new Date(), 0), 4),
-                        setHours(setMinutes(new Date(), 0), 5),
-                        setHours(setMinutes(new Date(), 0), getHours(new Date())),
+                        //setHours(setMinutes(new Date(), 0), 5),
                         //setHours(new Date(), getHours(new Date())),
                         //setHours(new Date(), 9),
-                        
-                        setHours(setMinutes(new Date(), 0), 6),
-                        setHours(setMinutes(new Date(), 0), 7),
+                        //setHours(setMinutes(new Date(), 0), 6),
+                        //setHours(setMinutes(new Date(), 0), 7),
+                        //setHours(setMinutes(new Date(), 0), getHours(new Date()))
                       ]}
+                      minTime={setHours(setMinutes(new Date(), 0), getHours(new Date()) + 1) }
+                      maxTime={setHours(setMinutes(new Date(), 0), 17) }
                       dateFormat="MMMM d, yyyy h:mm aa"
                       showDisabledMonthNavigation
                       required
+                      placeholderText='Click here to select a date'
                     /> 
                   </div>
                 </div>

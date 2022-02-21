@@ -1,7 +1,5 @@
-
-  
-  form {
-    width: 50vw;
+#payment-form {
+    width: 70vw;
     justify-items: center;
     align-items: center;
     box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),

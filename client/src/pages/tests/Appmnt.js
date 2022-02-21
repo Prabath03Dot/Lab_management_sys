@@ -1,9 +1,11 @@
-import Footerr from "../Footer";
-import NavBar from "../Navbar";
+import Footerr from "../Imp/Footer";
+import NavBar from "../Imp/Navbar";
 import { useState, useEffect } from "react";
 import Axios  from 'axios';
 import Table from 'react-bootstrap/Table'
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate} from "react-router-dom";
+import { useUserAuth } from "../../Context/userAuthContext";
+import { onAuthStateChanged,getAuth } from "firebase/auth";
 
 
 
@@ -11,6 +13,32 @@ const Appmnt = () => {
     const [testList, setTestList] = useState([]);
     const { id } = useParams();
     //const [changeTest, setChangeTest] = useState();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const {logIn} = useUserAuth();
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+    const auth = getAuth();
+    const {user, logOut } = useUserAuth();
+
+    const handleSubmit = async (e)=>{
+        //e.preventDefault();
+        setError("");
+        if(!user){
+            try{
+                await logIn(email, password);
+                navigate("/appmnt");
+            }
+            catch (err){
+                setError(err.message);
+            } 
+        }else{
+            navigate(`/appmnt/${test.test_id}`)
+        }
+        
+    }
+
 
     useEffect(() => {
       Axios.get("http://localhost:5000/appmntt")
@@ -43,7 +71,7 @@ const Appmnt = () => {
                         <td className="text-center">{test.test_id} </td>
                         <td>{test.testName} </td>
                         <td className="text-center"><button value={test.test_id} className="btn btn-primary btn-sm px-3 text-light">
-                        <Link className="text-light" to={`/appmnt/${test.test_id}`}>Checkout</Link>
+                        <Link className="text-light" to={`/appmnt/${test.test_id}`} onClick={handleSubmit}>Checkout</Link>
                         </button></td>
                     </tr>  
              )

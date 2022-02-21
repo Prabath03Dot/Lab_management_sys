@@ -1,5 +1,5 @@
-import Footerr from "../Footer";
-import NavBar from "../Navbar";
+import Footerr from "../Imp/Footer";
+import NavBar from "../Imp/Navbar";
 import { useState, useEffect } from "react";
 import Axios  from 'axios';
 import Table from 'react-bootstrap/Table'
