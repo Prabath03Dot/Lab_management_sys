@@ -3,6 +3,8 @@ import Footerr from '../Imp/Footer'
 import NavBar from '../Imp/Navbar'
 import img1 from '../../images/chemistry.jpg'
 import img2 from '../../images/bill-oxford-tR0PPLuN6Pw-unsplash.jpg'
+import { Link } from 'react-router-dom'
+
 
 export default function BulkTest() {
   return (
@@ -10,7 +12,7 @@ export default function BulkTest() {
         <NavBar />
 
             {/* Bulk Test Component */}
-            <h1 className='text-center fw-1 my-4 py-3'>Choose Your Subscription Plan</h1>
+            <h1 className='text-center fw-1 mt-2 py-3'>Choose Your Subscription Plan</h1>
             <div className='container mt-3'>
             <div className="card-group">
             <div className="card">
@@ -20,7 +22,9 @@ export default function BulkTest() {
                 <p className="card-text">150 Test Per Day</p>
                 <p className="card-text">40k Test Per Month</p>
                 <p className="card-text">Email Support</p>
-                <button className='btn btn-primary text-light'><a className='text-light text-decoration-none' href="https://buy.stripe.com/test_6oE5lTaBUcO66cw7su" target="_blank">Checkout</a></button>
+                {/* <button className='btn btn-primary text-light'>
+                <Link className='text-light text-decoration-none' to='/bulkform' >Checkout</Link>
+                </button> */}
                 </div>
             </div>
             <div className="card">
@@ -30,7 +34,9 @@ export default function BulkTest() {
                 <p className="card-text">500 Test Per Day</p>
                 <p className="card-text">70k Test Per Month</p>
                 <p className="card-text">Online Chat Support</p>
-                <button className='btn btn-primary text-light'><a className='text-light text-decoration-none' href="https://buy.stripe.com/test_7sI5lT25o7tMasMeUX" target="_blank">Checkout</a></button>
+                {/* <button className='btn btn-primary text-light'>
+                <Link className='text-light text-decoration-none' to='/bulkform'>Checkout</Link>
+                </button> */}
 
                 </div>
             </div>
@@ -42,11 +48,19 @@ export default function BulkTest() {
                 <p className="card-text">100k Test Per Month</p>
                 <p className="card-text">Email Support</p>
                 <p className="card-text">Online Chat Support</p>    
-                <button className='btn btn-primary text-light'><a className='text-light text-decoration-none' href="https://buy.stripe.com/test_fZe7u19xQ9BUfN6eUY" target="_blank">Checkout</a></button>
+                {/* <button className='btn btn-primary text-light'>
+                <Link className='text-light text-decoration-none' to='/bulkform'>Checkout</Link>
+                </button> */}
 
                 </div>
             </div>
             </div>
+            </div>
+            <div className='justify-items-center align-items-center container my-3'>
+            <center>
+                <button className='btn btn-primary text-light justify-items-center align-items-center'>
+                    <Link className='text-light text-decoration-none mx-auto' to='/bulkform'>Proceed to Checkout</Link>
+                </button> </center>
             </div>
 
 

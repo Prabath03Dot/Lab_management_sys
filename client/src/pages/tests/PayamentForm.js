@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState, useEffect } from "react";
+import { useState,React } from "react";
 import {CardElement,useStripe,useElements} from "@stripe/react-stripe-js";
 import axios from "axios";
 import './BookTest.css';
@@ -9,7 +8,7 @@ import setMinutes from "date-fns/setMinutes";
 import getHours from 'date-fns/getHours'
 import "react-datepicker/dist/react-datepicker.css";
 import {Link} from 'react-router-dom';
-//import currentHour from 'date-fns'
+import { DateTime } from "luxon";
 
 const cardStyle = {
     style: {
@@ -170,14 +169,15 @@ export default function PayamentForm() {
                         setHours(setMinutes(new Date(), 0), 2),
                         setHours(setMinutes(new Date(), 0), 3),
                         setHours(setMinutes(new Date(), 0), 4),
-                        //setHours(setMinutes(new Date(), 0), 5),
+                        setHours(setMinutes(new Date(), 0), 5),
                         //setHours(new Date(), getHours(new Date())),
                         //setHours(new Date(), 9),
-                        //setHours(setMinutes(new Date(), 0), 6),
+                        setHours(setMinutes(new Date(), 0), 6),
                         //setHours(setMinutes(new Date(), 0), 7),
                         //setHours(setMinutes(new Date(), 0), getHours(new Date()))
                       ]}
                       minTime={setHours(setMinutes(new Date(), 0), getHours(new Date()) + 1) }
+                      //minTime={DateTime.local().hour}
                       maxTime={setHours(setMinutes(new Date(), 0), 17) }
                       dateFormat="MMMM d, yyyy h:mm aa"
                       showDisabledMonthNavigation

@@ -34,7 +34,8 @@ const Appmnt = () => {
                 setError(err.message);
             } 
         }else{
-            navigate(`/appmnt/${test.test_id}`)
+            //navigate(`/appmnt/${test.test_id}`);
+            navigate("/appmnt");
         }
         
     }

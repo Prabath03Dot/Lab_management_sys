@@ -15,6 +15,9 @@ import "@stripe/stripe-js";
 import BulkTest from './pages/tests/BulkTest';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import UserReset from './pages/signUpIn/UserReset';
+import BulkTestForm from './pages/tests/BulkTestForm';
+import Blog from './pages/Mlt/Blog';
+import BlogEdit from './pages/Mlt/BlogEdit';
 
 
 function App() {
@@ -38,15 +41,36 @@ function App() {
               <MainHome></MainHome>
             </ProtectedRoutes>}>
           </Route>
+          <Route path="/appmnt" element={
+            <ProtectedRoutes>
+              <Appmnt></Appmnt>
+            </ProtectedRoutes>}>
+          </Route>
           <Route path="/appmnt/:id" element={
             <ProtectedRoutes>
               <BookTest></BookTest>
             </ProtectedRoutes>}>
           </Route>
+          <Route path="/bulkform" element={
+            <ProtectedRoutes>
+              <BulkTestForm></BulkTestForm>
+            </ProtectedRoutes>}>
+          </Route>
 
-          <Route path="*" element={<Error />}></Route>
+          {/* MLT Routes */}
+          <Route path="/blog" element={<Blog />}></Route>
+          <Route path="/blogEdit" element={<BlogEdit />}></Route>
+
+
+
+          <Route path="*" element={<Error />}></Route>       
         </Routes>
+
         </UserAuthContextProvider>
+
+          {/* <Routes>
+          </Routes> */}
+
       </Router>
     );
   

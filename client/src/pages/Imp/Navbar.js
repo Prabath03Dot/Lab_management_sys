@@ -112,7 +112,7 @@ const NavBar = () => {
                 Education
             </a>
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink2">
-                <li><a className="dropdown-item drp" href="#">Action</a></li>
+                <li><Link className="dropdown-item drp" to="/blog">Blogs</Link></li>
                 <li><a className="dropdown-item drp" href="#">Another action</a></li>
                 <li><a className="dropdown-item drp" href="#">Something else here</a></li>
             </ul>
