@@ -77,6 +77,25 @@ app.post('/createSubs', async (req,res) => {
 	
 } )
 
+app.post('/createBlog' , async (req,res)=> {
+	console.log(res.body);
+
+	try{
+		await Company.create({
+			testlabName: req.body.testlabName,
+			subsPlan: req.body.subsPlan,
+			address: req.body.address,
+			email: req.body.email,
+			phoneNumber: req.body.phoneNumber
+		})
+		res.json({ status: 'ok'});
+		console.log('Created Blog')
+	}catch(err){
+		console.log(err)
+		res.json({ status: 'error' });
+	}
+})
+
 app.get('/gto', (req,res)=> {
     res.send("Hello wrld");
 } )
