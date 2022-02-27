@@ -11,6 +11,7 @@ app.use(cors());
 const Test = require('./models/test_cat');
 const User = require('./models/user');
 const Company = require("./models/company");
+const Blog = require('./models/blog');
 
 
 //----------------------------------------------------------------
@@ -81,12 +82,10 @@ app.post('/createBlog' , async (req,res)=> {
 	console.log(res.body);
 
 	try{
-		await Company.create({
-			testlabName: req.body.testlabName,
-			subsPlan: req.body.subsPlan,
-			address: req.body.address,
-			email: req.body.email,
-			phoneNumber: req.body.phoneNumber
+		await Blog.create({
+			blogTitle: req.body.blogTitle,
+			blogAuthor: req.body.blogAuthor,
+			blogContent: req.body.blogContent,
 		})
 		res.json({ status: 'ok'});
 		console.log('Created Blog')

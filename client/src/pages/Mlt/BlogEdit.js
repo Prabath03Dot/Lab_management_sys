@@ -9,20 +9,20 @@ import Footer from '../Imp/Footer';
 import {EditorState,convertToRaw} from 'draft-js'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useEffect } from "react";
-//import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import draftToHtml from 'draftjs-to-html';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 import React, { useRef } from 'react';
+import { Notification } from '@mantine/core';
 
 export default function BlogEdit() {
     const editorRef = useRef(null);
     const navigate = useNavigate();
     const [isError, setError] = useState(null);
     const [content, setContent] = useState();
-    const [blogTitle, setBlogTitle] = useState();
-    const [blogAuthor, setBlogAuthor] = useState();
+    const [blogTitle, setBlogTitle] = useState("Melanina");
+    const [blogAuthor, setBlogAuthor] = useState("james B");
     const [blogContent, setBlogContent] = useState();
     
 
@@ -52,8 +52,8 @@ export default function BlogEdit() {
         e.preventDefault();
         if (editorRef.current) {
             console.log(editorRef.current.getContent());
-            setContent(editorRef.current.getContent());
-            //setBlogContent(editorRef.current.getContent())
+            //setContent(editorRef.current.getContent());
+            setBlogContent(editorRef.current.getContent())
         }
 
         try{
@@ -71,7 +71,9 @@ export default function BlogEdit() {
             //     email : setEmail
             //   })
               console.log(blogTitle + 'Hri');
-              //console.log(blogContent)
+              console.log(blogContent)
+              navigate('/blog');
+              
               
             }).catch((error) => {
               if (error.response) {
@@ -208,19 +210,19 @@ export default function BlogEdit() {
 
 {/* Blog Edits */}
 <div className='container mt-3'>
-  <h2 className="text-center py-2">Create A Blog </h2>
+  <h2 className="text-center py-2">Create A Blog</h2>
   <form onSubmit={log}>
     <input className="my-4 form-control" type="text" name="title" id="title" placeholder="Blog Title" value={blogTitle} onChange={e => setBlogTitle(e.target.value)}/>
     <input className="my-4 form-control" type="text" name="authorName" id="authorName" placeholder="Author Name"  value={blogAuthor} onChange={e => setBlogAuthor(e.target.value)}/>
    <Editor
     apiKey="jh0lc7p3nt1p5pp3egexvy7hvfw953p2uj0wxddyqfxmeosf"
             onInit={(evt, editor) => {
-                setContent(editor.getContent({format: 'text'}));
+                setBlogContent(editor.getContent({format: 'html'}));
             }}
           initialValue="<p>This is the initial content of the editor.</p>"
           onEditorChange={(newValue, editor) => {
         //setValue(newValue);
-        setContent(editor.getContent({format: 'text'}));
+        setBlogContent(editor.getContent({format: 'html'}));
       }}
           init={{
             height: 500,
@@ -254,7 +256,7 @@ export default function BlogEdit() {
 
 </div>
 
-{content}
+{/* {blogContent} */}
 
 
 {/* Footer */}
