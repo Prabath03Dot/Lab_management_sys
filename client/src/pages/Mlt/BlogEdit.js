@@ -21,7 +21,7 @@ export default function BlogEdit() {
     const [blogAuthor, setBlogAuthor] = useState("james B");
     const [blogContent, setBlogContent] = useState();
     const [value, setValue] = useState();
-    
+
 
     const auth = getAuth();
     const {user, logOut } = useUserAuth();
