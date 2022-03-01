@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container' 
 import '../../css/Navabr.css';
@@ -6,12 +6,15 @@ import { useUserAuth } from "../../Context/userAuthContext";
 import { useState } from "react";
 import { onAuthStateChanged,getAuth } from "firebase/auth";
 import Footer from '../Imp/Footer';
-import img1 from '../../images/bill-oxford-tR0PPLuN6Pw-unsplash.jpg'
+import React, {useEffect} from 'react';
+import axios from 'axios';
+
 
 export default function Blog() {
-    const navigate = useNavigate();
     const auth = getAuth();
     const {user, logOut } = useUserAuth();
+    const [content, setContent] = useState(null);
+    
     
     const handleLogout =  async () => {
         try{
@@ -30,6 +33,19 @@ export default function Blog() {
             console.log("user signed Out");
         }
       });
+
+
+    useEffect(() => {
+        axios.get("http://localhost:5000/blogList")
+        .then((response) => {
+            setContent(response.data)
+            console.log(response.data)
+        })
+        
+      }, [])
+      if (!content) return null;
+//var randomCon =  content[Math.floor(Math.random()*content.length)];
+//console.log(randomCon.map(c => c.blogTitle ))
   return (
 <div>
 
@@ -149,41 +165,43 @@ export default function Blog() {
 </div>  
 
 {/* Blog Section */}
+{/* 
 <main>
   <div className="container py-4">
 
+
     <div className="p-5 mb-4 bg-light rounded-3">
       <div className="container-fluid py-4">
-        <h1 className="display-5 fw-bold">Custom jumbotron</h1>
-        <p className="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-        <button className="btn btn-primary btn-lg" type="button">Example button</button>
+
+        {randomCon.map(random => {
+            return (<div key={random._id}>
+                <h1 className="display-5 fw-bold"> {random.blogTitle}</h1>
+                <p className="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                <button className="btn btn-primary btn-lg" type="button">Example button</button> 
+            </div>)
+        })}
+        
       </div>
     </div>
     </div>
-</main>
+</main> 
+*/}
 
-<div className="card mb-3 container border-0" >
-<div className="row">
-<div className="col-md-3 mb-3">
-  <img src={img1} className="img-fluid rounded-start" alt="..."/>
-</div>
-<div className="col-md-8">
+<div className="card mb-3 container border-0 my-2" >
+<div className="align-items-center justify-items-center ">
+<div >
   <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-
-<div className="col-md-3 mb-3">
-  <img src={img1} className="img-fluid rounded-start" alt="..."/>
-</div>
-<div className="col-md-8">
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-  </div>
+   {content.map(cList => {
+       return(
+           <div className="mb-3 bg-light bg-gradient p-5" key={cList._id}>
+           <h5 className="card-title">{cList.blogTitle}</h5>
+                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p className="card-text"><small className="text-muted fst-italic"> -By {cList.blogAuthor}</small></p>
+                <Link className="text-dark py-2" to={`/blog/${cList._id}`}>Read More...</Link>
+           </div>
+       )
+   })}
+ </div>
 </div>
 
 </div>

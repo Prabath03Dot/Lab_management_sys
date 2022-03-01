@@ -88,11 +88,23 @@ app.post('/createBlog' , async (req,res)=> {
 			blogContent: req.body.blogContent,
 		})
 		res.json({ status: 'ok'});
-		console.log('Created Blog')
+		//console.log('Created Blog')
 	}catch(err){
 		console.log(err)
 		res.json({ status: 'error' });
 	}
+})
+
+app.get('/blogList', (req, res) => {
+	Blog.find((error,data) => {
+		if(error){
+			console.log(error)
+			res.json({ status: 'error' });
+		}else{
+			res.json(data)
+			console.log(res.data)
+		}
+	})
 })
 
 app.get('/gto', (req,res)=> {

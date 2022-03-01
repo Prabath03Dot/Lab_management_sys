@@ -6,24 +6,21 @@ import { useUserAuth } from "../../Context/userAuthContext";
 import { useState } from "react";
 import { onAuthStateChanged,getAuth } from "firebase/auth";
 import Footer from '../Imp/Footer';
-import {EditorState,convertToRaw} from 'draft-js'
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useEffect } from "react";
-import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import draftToHtml from 'draftjs-to-html';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 import React, { useRef } from 'react';
-import { Notification } from '@mantine/core';
+import '../../../node_modules/react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function BlogEdit() {
     const editorRef = useRef(null);
     const navigate = useNavigate();
     const [isError, setError] = useState(null);
-    const [content, setContent] = useState();
     const [blogTitle, setBlogTitle] = useState("Melanina");
     const [blogAuthor, setBlogAuthor] = useState("james B");
     const [blogContent, setBlogContent] = useState();
+    const [value, setValue] = useState();
     
 
     const auth = getAuth();
@@ -51,7 +48,7 @@ export default function BlogEdit() {
     const log = async (e) => {
         e.preventDefault();
         if (editorRef.current) {
-            console.log(editorRef.current.getContent());
+            //console.log(editorRef.current.getContent());
             //setContent(editorRef.current.getContent());
             setBlogContent(editorRef.current.getContent())
         }
@@ -63,18 +60,21 @@ export default function BlogEdit() {
                 blogContent
             } )
             .then(res => {
-              const data = res.data;
-            //   setInvoice({
-            //     firstName: setFirstName,
-            //     lastName: setLastName,
-            //     phoneNumber : setPhoneNumber,
-            //     email : setEmail
-            //   })
-              console.log(blogTitle + 'Hri');
-              console.log(blogContent)
-              navigate('/blog');
-              
-              
+              //console.log(blogTitle + 'Hri');
+              //console.log(blogContent)
+              //alert('<div className="bg-primary">ddddddd</div>');
+              //toast('Post Created')
+              toast.success('Content Logged', {
+                position: "bottom-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+              //navigate('/blog');            
+              navigate('/blogEdit');            
             }).catch((error) => {
               if (error.response) {
                 console.log(error.response);
@@ -219,7 +219,7 @@ export default function BlogEdit() {
             onInit={(evt, editor) => {
                 setBlogContent(editor.getContent({format: 'html'}));
             }}
-          initialValue="<p>This is the initial content of the editor.</p>"
+          initialValue={value}
           onEditorChange={(newValue, editor) => {
         //setValue(newValue);
         setBlogContent(editor.getContent({format: 'html'}));
@@ -230,7 +230,7 @@ export default function BlogEdit() {
             plugins: [
               'advlist autolink lists link image charmap print preview anchor',
               'searchreplace visualblocks code fullscreen',
-              'insertdatetime media table paste code help wordcount'
+              'insertdatetime media table paste code help wordcount directionality'
             ],
             toolbar: 'undo redo | formatselect | ' +
             'bold italic forecolor backcolor | alignleft aligncenter ' +
@@ -245,9 +245,6 @@ export default function BlogEdit() {
     tools: { title: 'Tools', items: 'spellchecker spellcheckerlanguage | code wordcount' },
     table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
             },
-            toolbar_mode: 'floating',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
           }}
         />
@@ -256,8 +253,17 @@ export default function BlogEdit() {
 
 </div>
 
-{/* {blogContent} */}
-
+<ToastContainer 
+  position="bottom-right"
+  autoClose={2000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>
 
 {/* Footer */}
 <Footer></Footer>

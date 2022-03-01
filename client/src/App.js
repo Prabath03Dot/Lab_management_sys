@@ -18,6 +18,7 @@ import UserReset from './pages/signUpIn/UserReset';
 import BulkTestForm from './pages/tests/BulkTestForm';
 import Blog from './pages/Mlt/Blog';
 import BlogEdit from './pages/Mlt/BlogEdit';
+import BlogDetails from './pages/Mlt/BlogDetails';
 
 
 function App() {
@@ -59,7 +60,9 @@ function App() {
 
           {/* MLT Routes */}
           <Route path="/blog" element={<Blog />}></Route>
-          <Route path="/blogEdit" element={<BlogEdit />}></Route>
+          <Route path="/blog/:id" element={<BlogDetails />}></Route>          
+          <Route path="/blogEdit" element={<BlogEdit />}></Route>          
+
 
 
 
