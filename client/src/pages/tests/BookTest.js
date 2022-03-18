@@ -14,6 +14,7 @@ import {
   useElements, 
   Elements
 } from "@stripe/react-stripe-js";
+import NavigationBar from "../Imp/NavigationBar";
 
 
 const BookTest = () => {
@@ -40,7 +41,7 @@ const BookTest = () => {
 
     return ( 
     <div>
-        <NavBar/>
+       <NavigationBar/>
 
         
         <div className="text-center fs-1 mt-5 mb-3">Book Test Appoinmnet</div>

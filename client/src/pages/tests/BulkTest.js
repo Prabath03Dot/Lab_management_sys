@@ -4,12 +4,13 @@ import NavBar from '../Imp/Navbar'
 import img1 from '../../images/chemistry.jpg'
 import img2 from '../../images/bill-oxford-tR0PPLuN6Pw-unsplash.jpg'
 import { Link } from 'react-router-dom'
+import NavigationBar from '../Imp/NavigationBar'
 
 
 export default function BulkTest() {
   return (
     <div>
-        <NavBar />
+        <NavigationBar/>
 
             {/* Bulk Test Component */}
             <h1 className='text-center fw-1 mt-2 py-3'>Choose Your Subscription Plan</h1>
@@ -27,9 +28,9 @@ export default function BulkTest() {
                 </button> */}
                 </div>
             </div>
-            <div className="card">
+            <div className="card ">
                 <img src={img2} className="card-img-top" alt='chemistry.jpg' />
-                <div className="card-body">
+                <div className="card-body bg-primary bg-gradient text-light">
                 <h5 className="card-title my-2">Standerd Plan</h5>
                 <p className="card-text">500 Test Per Day</p>
                 <p className="card-text">70k Test Per Month</p>
@@ -56,9 +57,9 @@ export default function BulkTest() {
             </div>
             </div>
             </div>
-            <div className='justify-items-center align-items-center container my-3'>
+            <div className='justify-items-center align-items-center container my-5'>
             <center>
-                <button className='btn btn-primary text-light justify-items-center align-items-center'>
+                <button className='btn btn-primary text-light justify-items-center align-items-center '>
                     <Link className='text-light text-decoration-none mx-auto' to='/bulkform'>Proceed to Checkout</Link>
                 </button> </center>
             </div>

@@ -61,9 +61,6 @@ const Login = () => {
     }
 
 
-
-
-
     return ( 
         <div className="logc ">
             <div className="container login-container mx-auto pt-5 pb-4">
@@ -72,7 +69,7 @@ const Login = () => {
 
             <div className="row container mx-auto">
                 <div className="col-md-6 login-form-1 rounded-start">
-                    <h3 className="text-light">User/Patient Login</h3>
+                    <h3 className="text-light">User Login</h3>
                     { error && <div className="alert alert-danger" role="alert">{error}</div>}
 
 

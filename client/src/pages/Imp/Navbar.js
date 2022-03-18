@@ -6,30 +6,37 @@ import { useUserAuth } from "../../Context/userAuthContext";
 import { useState } from "react";
 import { onAuthStateChanged,getAuth } from "firebase/auth";
 import Button from 'react-bootstrap/Button'
-
+import { useAuth0 } from "@auth0/auth0-react";
+import { SignupForm, LoginForm, PasswordResetForm ,LogoutButton} from "../signUpIn/useFront";
+import Userfront from "@userfront/react";
 
 const NavBar = () => {
+    const userFrontuser = Userfront.user;
     const navigate = useNavigate();
     const auth = getAuth();
-    const {user, logOut } = useUserAuth();
-    
-    const handleLogout =  async () => {
-        try{
-            await logOut();
-            navigate('/');
+    // const {user, logOut } = useUserAuth();
+    const { loginWithRedirect, isAuthenticated, logout, error, isLoading, user} = useAuth0();
+    // Log out a user
+//Userfront.logout();
+    // const res = await Userfront.logout(...);
+    // console.log(res);
+    // const handleLogout =  async () => {
+    //     try{
+    //         await logOut();
+    //         navigate('/');
             
-        }catch(err){
-            console.log(err.message)
-        }
-    }
+    //     }catch(err){
+    //         console.log(err.message)
+    //     }
+    // }
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          console.log("user signed In");
-        } else {
-            console.log("user signed Out");
-        }
-      });
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //       console.log("user signed In");
+    //     } else {
+    //         console.log("user signed Out");
+    //     }
+    //   });
 
     return (
         
@@ -53,19 +60,41 @@ const NavBar = () => {
 
     <Navbar >
     <Container>
-        <button className="btn btn-dark"><Link to="/" className="text-decoration-none text-light px-2"> Meditech Labs</Link></button>
+        <div className="text-secondary fs-4 px-2"> MediTech Labs</div>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
         <div className="d-flex">
         
-            {user ? <div> <button type="button" onClick={handleLogout} className="btn btn-secondary mr-2 border border-0">Log Out</button> </div> : <div><button type="button" className="btn btn-secondary mx-2 border border-0"><Link className="text-light text-decoration-none" to="/login" >Log In
-            </Link></button></div> }
-            
+         <button className="btn btn-primary btn-sm rounded-0 rounded-start px-2"> <Link className="text-light text-decoration-none" to='/useLogin'> Login </Link> </button>
+         <button className="btn btn-primary btn-sm rounded-0 rounded-end px-2"> <Link className="text-light text-decoration-none" to='/useSignUp'> SignUp </Link> </button>
+         {/* <LogoutButton /> */}
+            {/* { error && <div>Authetication Error...</div> }
+            { !error && isLoading && <button className="btn btn-primary" type="button" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Authenticating...</button> }
+            { !error && !isLoading && (
+                <>
+                   {!isAuthenticated && (
+                <button className="btn btn-primary" type="button" onClick={() => loginWithRedirect()}>Log In</button>
+            ) }
+            {isAuthenticated && (
+                <button className="btn btn-primary" type="button" onClick={() => logout({ returnTo: window.location.origin })}>Log Out</button>
+            ) } 
+                </>
+            ) } */}
+
             
             
             <form className="d-flex">
                 {/* <input className="form-control me-2 border-0" type="search" placeholder="Search" aria-label="Search" />  */}
-                 <div className='text-center pt-1'>{user && user.email}</div> 
+                 <div className='text-center pt-1'>
+                 {/* {user && user.email} */}
+
+                 {/* {isAuthenticated && (
+                <div> {user.email} </div>
+                ) }
+                 */}
+{/* {  Userfront.tokens.accessToken && userFrontuser.email} */}
+
+                 </div> 
                 
                 {/* <button className="btn btn-outline-success border border-0" type="submit"><i class="bi bi-search"></i></button> */}
             </form>
@@ -83,7 +112,7 @@ const NavBar = () => {
         <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul className="navbar-nav mx-auto  ">
+        <ul className="navbar-nav mx-auto">
 
             <li className="nav-item dropdown mx-2">
             <a className="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

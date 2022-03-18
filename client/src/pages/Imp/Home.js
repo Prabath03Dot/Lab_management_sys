@@ -11,12 +11,8 @@ import svg1 from '../../images/flask.png';
 import svg2 from '../../images/trophy.png';
 import svg3 from '../../images/test-tube.png';
 import svg4 from '../../images/microscope (1).png';
-import { Navbar } from 'react-bootstrap';
-
-
 
 const Home = () => {
-    const [show, setShow] = useState(true);
 
     return (
 <div> 
@@ -140,9 +136,6 @@ const Home = () => {
         </div>
   
     </div>
-
-    {/* <hr className="pt-1 container my-2"></hr> */}
-
 
 
     {/* News & Events */}

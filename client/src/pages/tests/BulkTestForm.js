@@ -14,6 +14,7 @@ import {
   useElements, 
   Elements
 } from "@stripe/react-stripe-js";
+import NavigationBar from "../Imp/NavigationBar";
 
 
 const BulkTestForm = () => {
@@ -40,7 +41,7 @@ const BulkTestForm = () => {
 
     return ( 
     <div>
-        <NavBar/>
+        <NavigationBar/>
 
         
         <div className="text-center fs-1 mt-3 mb-3">Subscribe to your plan</div>

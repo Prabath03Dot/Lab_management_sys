@@ -1,10 +1,11 @@
 import Footerr from "../Imp/Footer";
 import NavBar from "../Imp/Navbar";
+import NavigationBar from "../Imp/NavigationBar";
 
 const FindTest = () => {
     return (
         <div> 
-            <NavBar></NavBar>
+            <NavigationBar/>
 
             {/* Components  */}
             <div className="container  mt-5 pt-4 pb-5">

@@ -107,6 +107,47 @@ app.get('/blogList', (req, res) => {
 	})
 })
 
+
+app.put('/updateblog/:id', (req, res) => {
+	console.log(req.body, 'request body');
+	const newBlogTitle = req.body.newBlogTitle;
+	const newBlogAuthor = req.body.newBlogAuthor;
+	const newBlogContent = req.body.newBlogContent;
+	//const id =  req.body._id;
+	const {id} = req.params;
+	const updatedBlog= { blogTitle: '', blogAuthor: '', blogContent: ''};
+	//console.log(id, 'params');
+	updatedBlog.blogTitle = newBlogTitle;
+	updatedBlog.blogAuthor = newBlogAuthor;
+	updatedBlog.blogContent = newBlogContent;
+	//console.log(updatedBlog, 'blog updated');
+	try{
+		 Blog.findByIdAndUpdate( id ,updatedBlog, function(error, doc){
+			if(error){
+				console.log(error)
+			}
+			//console.log(doc)
+			res.send(doc);
+		})
+	}catch(error){
+		console.log('Error');
+		console.log(error);
+	}
+
+})
+
+app.delete('/delete/:id', (req,res) => {
+	const {id} = req.params;
+	Blog.findByIdAndRemove(id, function (err, docs) {
+		if (err){
+			console.log(err)
+		}
+		else{
+			console.log("Removed blog : ", docs);
+	}})
+	res.send('deleted')
+})
+
 app.get('/gto', (req,res)=> {
     res.send("Hello wrld");
 } )
