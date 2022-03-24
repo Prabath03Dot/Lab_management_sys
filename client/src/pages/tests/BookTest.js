@@ -8,10 +8,7 @@ import { loadStripe } from "@stripe/stripe-js";
 //import ProductImage from '../images/flask.png'
 import PayamentForm from "./PayamentForm";
 //import './BookTest.css';
-import {
-  CardElement,
-  useStripe,
-  useElements, 
+import { 
   Elements
 } from "@stripe/react-stripe-js";
 import NavigationBar from "../Imp/NavigationBar";
@@ -20,17 +17,13 @@ import NavigationBar from "../Imp/NavigationBar";
 const BookTest = () => {
     const { id } = useParams();
     const [testList, setTestList] = useState([]);
-    const [changeTest, setChangeTest] = useState();
-    const [stripeError, setStripeError] = useState(null);
-    const [isLoading, setLoading] = useState(false);
-
 
     //Appoinment Post Request
     useEffect(() => {
       Axios.get("http://localhost:5000/appmntt")
       .then((response) => {
           setTestList(response.data)
-          console.log(response.data)
+          //console.log(response.data[id-1].testName);
       })
       
     }, [])
@@ -47,7 +40,7 @@ const BookTest = () => {
         <div className="text-center fs-1 mt-5 mb-3">Book Test Appoinmnet</div>
         <div className="bg-light container">
         {    
-            testList.filter(tests => tests.test_id == id )
+            testList.filter(tests => tests.test_id === id )
             .map((test) => (
                 <div key={test.test_id}>
                     <div className="accordion" id="accordionExample">
@@ -79,7 +72,7 @@ const BookTest = () => {
         <div className="container p-5 bg-light">
         <h3 className="py-2">Checkout Section</h3>
           <Elements stripe={stripeTestPromise} >
-            <PayamentForm/>
+            <PayamentForm />
           </Elements>
         </div>
 

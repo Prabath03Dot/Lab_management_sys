@@ -27,14 +27,17 @@ import { RequireAuth } from './pages/signUpIn/userFrontProtected';
 //import Loading from './pages/Imp/Loading';
 // import SignupForm, LoginForm , PasswordResetForm from "../signUpIn/useFront";
 import Userfront from "@userfront/react";
-import RestrictPage from './pages/Imp/RestrictPage';
-
+import About from './pages/Imp/About'
+import Profile from './pages/Imp/Profile';
+import Dashboard from './pages/Imp/Dashboard';
+import Account from './pages/Imp/Account';
+import Reports from './pages/Imp/Reports';
 
 function App() {
   const { isLoading } = useAuth0();
 
   if (isLoading) {
-      return <div><div className="justify-items-center align-items-center">Loading...</div></div> ;
+      return <div><center className="justify-content-center justify-content-center mt-5 pt-5 mx-auto fs-1">Loading...</center></div> ;
     }
 
     const roleAdmin = Userfront.user.hasRole("admin");
@@ -48,6 +51,7 @@ function App() {
         <UserAuthContextProvider>
         <Routes> 
           <Route path="/" element={<Home />}></Route>
+
           {/* <Route path="/login" element={<Login />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
@@ -57,21 +61,32 @@ function App() {
           <Route path="/useLogin" element={<LoginForm />}></Route>
           <Route path="/useSignUp" element={<SignupForm />}></Route>
 
+
           <Route path="/home" element={
             <RequireAuth> <MainHome></MainHome> </RequireAuth>
           } ></Route>
 
+          <Route path="/account" element={
+            <RequireAuth> <Account></Account> </RequireAuth>
+          } ></Route>
+
+          <Route path="/reports" element={
+            <RequireAuth> <Reports></Reports> </RequireAuth>
+          } ></Route>
+
+          <Route path="/dashboard" element={
+            <RequireAuth> <Dashboard></Dashboard> </RequireAuth>
+          } ></Route>
+
+        <Route path="/about" element={<About />}></Route> 
+
           <Route path="/findtest" element={
-            <RequireAuth>
+           
               <FindTest></FindTest>
-            </RequireAuth>
+            
           }></Route>
 
-          {!roleMlt && <Route path="/appmnt" element={
-            <RequireAuth>
-              <Appmnt></Appmnt>
-            </RequireAuth>
-          }></Route>}
+          <Route path="/appmnt" element={<Appmnt></Appmnt>}></Route>
 
           {!roleMlt && <Route path="/appmnt/:id" element={
             <RequireAuth>
@@ -80,9 +95,9 @@ function App() {
           }></Route>}
 
           <Route path="/bulk" element={
-            <RequireAuth>
+            
               <BulkTest></BulkTest>
-            </RequireAuth>
+            
           }></Route>
 
           {!roleMlt && <Route path="/bulkform" element={
@@ -92,73 +107,15 @@ function App() {
           }></Route>}
 
 
-
-
-          {/* <Route path="/home" element={
-            <ProtectedRoutes>
-              <MainHome></MainHome>
-            </ProtectedRoutes>}>
-          </Route> */}
-          {/* <Route path="/appmnt" element={
-            <ProtectedRoutes>
-              <Appmnt></Appmnt>
-            </ProtectedRoutes>}>
-          </Route> */}
-
-          {/* <Route path="/appmnt" element={<ProtectedRoute component={Appmnt} />} /> */}
-          {/* <Route path="/appmnt" element={
-            <RequireAuth> 
-              <Appmnt></Appmnt> 
-            </RequireAuth>
-          }></Route> */}
-          {/* <Route path="/restricted" element={<RestrictPage />}></Route> */}
-{/* {!roleAdmin ? <Route path="/restricted" element={<RestrictPage />}></Route>: <Route path="/appmnt" 
-          element={
-            <RequireAuth>
-              <Appmnt></Appmnt>
-            </RequireAuth>
-          }></Route>} */}
           {roleAdmin && (<Route path="/appmnt" element={
             <RequireAuth>
               <Appmnt></Appmnt>
             </RequireAuth>
           }></Route>)}
 
-          {/* <Route path="/bulkform" element={
-            <RequireAuth>
-              <BulkTestForm></BulkTestForm>
-            </RequireAuth>
-          }></Route> */}
-
-      
-
-
-          {/* <Route path="/home" element={<ProtectedRoute component={MainHome} />}></Route> */}
-          {/* <Route path="/appmnt/:id" element={<ProtectedRoute component={BookTest} />}></Route> */}
-          {/* <Route path="/bulkform" element={<ProtectedRoute component={BulkTestForm} />}></Route> */}
-          
-          
-
-       {/* {<ProtectedRoute component={Teleporter} />} */}
-          {/* <Route path="/appmnt/:id" element={
-            <ProtectedRoutes>
-              <BookTest></BookTest>
-            </ProtectedRoutes>}>
-          </Route> */}
-
-          {/* <Route path="/bulkform" element={
-            <ProtectedRoutes>
-              <BulkTestForm></BulkTestForm>
-            </ProtectedRoutes>}>
-          </Route> */}
 
           {/* MLT Routes */} 
-          <Route path="/blog" element={
-            <RequireAuth>
-              <Blog></Blog>
-            </RequireAuth>
-          }></Route>
-
+          <Route path="/blog" element={<Blog></Blog>}></Route>
           <Route path="/blog/:id" element={<BlogDetails />}></Route> 
 
           { roleMlt && <Route path="/blog/:id/edit" element={
@@ -175,7 +132,8 @@ function App() {
 
 
 
-          <Route path="*" element={<Error />}></Route>       
+          <Route path="*" element={<Error />}></Route>  
+     
         </Routes>
 
         </UserAuthContextProvider>

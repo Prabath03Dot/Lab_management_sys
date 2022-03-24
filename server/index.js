@@ -38,6 +38,7 @@ app.get('/appmntt', (req, res)=>{
     });
 });
 
+
 app.post('/createUser', async (req,res) => {
 	console.log(req.body);
 	// const newUser = new UserModel(user);
@@ -47,7 +48,11 @@ app.post('/createUser', async (req,res) => {
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,
 			email: req.body.email,
-			phoneNumber: req.body.phoneNumber
+			phoneNumber: req.body.phoneNumber,
+			testName: req.body.testName,
+			invoiceId: req.body.invoiceId,
+			startDate: req.body.startDate,
+			username: req.body.username
 		})
 		res.json({ status: 'ok'});
 	}catch(err){
@@ -56,6 +61,17 @@ app.post('/createUser', async (req,res) => {
 	}
 	
 } )
+
+app.get('/getUser', (req, res)=>{
+    User.find({}, (err, result)=>{
+        if(err){
+            res.json(err);
+        }else{
+            res.json(result);
+        }
+    });
+});
+
 
 app.post('/createSubs', async (req,res) => {
 	console.log(req.body);

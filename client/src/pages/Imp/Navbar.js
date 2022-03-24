@@ -60,7 +60,7 @@ const NavBar = () => {
 
     <Navbar >
     <Container>
-        <div className="text-secondary fs-4 px-2"> MediTech Labs</div>
+        <div className="text-secondary fs-4 px-2"> <Link className='text-secondary text-decoration-none' to='/'>MediTech</Link> </div>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
         <div className="d-flex">
@@ -142,8 +142,8 @@ const NavBar = () => {
             </a>
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink2">
                 <li><Link className="dropdown-item drp" to="/blog">Blogs</Link></li>
-                <li><a className="dropdown-item drp" href="#">Another action</a></li>
-                <li><a className="dropdown-item drp" href="#">Something else here</a></li>
+                <li><Link className="dropdown-item drp" to="/blogEdit">Create Blog</Link></li>
+                {/* <li><a className="dropdown-item drp" href="#">Something else here</a></li> */}
             </ul>
             </li>
 
@@ -152,13 +152,12 @@ const NavBar = () => {
                 News & Events
             </a>
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink3">
-                <li><a className="dropdown-item drp" href="#">Action</a></li>
-                <li><a className="dropdown-item drp" href="#">Another action</a></li>
-                <li><a className="dropdown-item drp" href="#">Something else here</a></li>
+                <li><a className="dropdown-item drp" href="#">News</a></li>
+                <li><a className="dropdown-item drp" href="#">Events</a></li>
             </ul>
             </li>
 
-            <li className="nav-item dropdown mx-2">
+            {/* <li className="nav-item dropdown mx-2">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 About
             </a>
@@ -167,7 +166,11 @@ const NavBar = () => {
                 <li><a className="dropdown-item drp" href="#">Another action</a></li>
                 <li><a className="dropdown-item drp" href="#">Something else here</a></li>
             </ul>
-            </li>
+            </li> */}
+
+            <Link className="nav-link mx-2" to="/about" role="button">
+                About
+            </Link>
         </ul>
         </div>
     </div>

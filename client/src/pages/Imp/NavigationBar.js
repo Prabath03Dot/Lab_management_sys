@@ -21,6 +21,7 @@ import Container from 'react-bootstrap/Container'
 export default function NavigationBar() {
     Userfront.init("6bgm6jgb");
     const navigate = useNavigate();
+    //console.log(Userfront.user)
     const userFrontuser = Userfront.user;
     // console.log(Userfront.tokens.accessToken);
     // if(userFrontuser.email === 'admin@example.com' || Userfront.user.hasRole("admin")){
@@ -51,14 +52,14 @@ export default function NavigationBar() {
 
     <Navbar >
     <Container>
-    <div className="text-secondary fs-4 px-2"> MediTech Labs</div>
+    <div className="text-secondary fs-4 px-2"> <Link className='text-secondary text-decoration-none' to='/home'>MediTech</Link> </div>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
         <div className="d-flex">
         
          {/* <button className="btn btn-primary btn-sm rounded-0 rounded-start px-2"> <Link className="text-light text-decoration-none" to='/useLogin'> Login </Link> </button>
          <button className="btn btn-primary btn-sm rounded-0 rounded-end px-2"> <Link className="text-light text-decoration-none" to='/useSignUp'> SignUp </Link> </button> */}
-         <LogoutButton />
+         {!Userfront.tokens.accessToken ? <></>: <LogoutButton />} 
             {/* { error && <div>Authetication Error...</div> }
             { !error && isLoading && <button className="btn btn-primary" type="button" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Authenticating...</button> }
             { !error && !isLoading && (
@@ -83,8 +84,27 @@ export default function NavigationBar() {
                 <div> {user.email} </div>
                 ) }
                  */}
-                    {userFrontuser.email}
+                    
+                    {/* <li className="nav-item dropdown mx-2">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {userFrontuser.email}
+                        </a>
+                        <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink1">
+                            <li><a className="dropdown-item drp" href="#">Action</a></li>
+                            <li><a className="dropdown-item drp" href="#">Another action</a></li>
+                            <li><a className="dropdown-item drp" href="#">Something else here</a></li>
+                        </ul>
+                    </li> */}
 
+                    <div className="dropdown">
+                    <div className="dropdown-toggle nav-link text-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {userFrontuser.email}
+                    </div>
+                    <ul className="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1">
+                        <li><Link className="dropdown-item drp" to="/account">Account</Link></li>
+                        <li><Link className="dropdown-item drp" to="/dashboard">Dashboard</Link></li>
+                    </ul>
+                    </div>
                  </div> 
                 
                 {/* <button className="btn btn-outline-success border border-0" type="submit"><i class="bi bi-search"></i></button> */}
@@ -133,8 +153,8 @@ export default function NavigationBar() {
             </a>
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink2">
                 <li><Link className="dropdown-item drp" to="/blog">Blogs</Link></li>
-                <li><a className="dropdown-item drp" href="#">Another action</a></li>
-                <li><a className="dropdown-item drp" href="#">Something else here</a></li>
+                <li><Link className="dropdown-item drp" to="/blogEdit">Create Blog</Link></li>
+                {/* <li><a className="dropdown-item drp" href="#">Something else here</a></li> */}
             </ul>
             </li>
 
@@ -143,13 +163,12 @@ export default function NavigationBar() {
                 News & Events
             </a>
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink3">
-                <li><a className="dropdown-item drp" href="#">Action</a></li>
-                <li><a className="dropdown-item drp" href="#">Another action</a></li>
-                <li><a className="dropdown-item drp" href="#">Something else here</a></li>
+                <li><a className="dropdown-item drp" href="#">News</a></li>
+                <li><a className="dropdown-item drp" href="#">Events</a></li>
             </ul>
             </li>
 
-            <li className="nav-item dropdown mx-2">
+            {/* <li className="nav-item dropdown mx-2">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 About
             </a>
@@ -158,7 +177,10 @@ export default function NavigationBar() {
                 <li><a className="dropdown-item drp" href="#">Another action</a></li>
                 <li><a className="dropdown-item drp" href="#">Something else here</a></li>
             </ul>
-            </li>
+            </li> */}
+            <Link className="nav-link mx-2" to="/about" role="button">
+                About
+            </Link>
         </ul>
         </div>
     </div>

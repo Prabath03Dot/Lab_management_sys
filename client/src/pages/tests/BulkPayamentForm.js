@@ -122,8 +122,9 @@ export default function PayamentForm() {
               <div className="row mb-3">
                   <label for="inputEmail2" className="col-sm-2 col-form-label">Subscription Plan</label>
                   <div className="col-sm-10">
-                  <select className="form-select form-control" aria-label="Default select " onChange={e => setsubsPlan(e.target.value)} >
-                    <option selected>Select Subscription Plan</option>
+                  <select className="form-select form-control" aria-label="Default select " 
+                  onChange={e => setsubsPlan(e.target.value)} required>
+                    <option value=''>None</option>
                     <option value="1">Basic Plan - LKR 30,000 </option>
                     <option value="2">Standerd Plan - LKR 80,000 </option>
                     <option value="3">Premium Plan - LKR 120,000 </option>

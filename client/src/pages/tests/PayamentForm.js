@@ -1,4 +1,4 @@
-import { useState,React } from "react";
+import { useState,React ,useEffect} from "react";
 import {CardElement,useStripe,useElements} from "@stripe/react-stripe-js";
 import axios from "axios";
 import './BookTest.css';
@@ -7,8 +7,10 @@ import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import getHours from 'date-fns/getHours'
 import "react-datepicker/dist/react-datepicker.css";
-import {Link} from 'react-router-dom';
+import {Link,useParams} from 'react-router-dom';
 import { DateTime } from "luxon";
+import Axios  from 'axios';
+import Userfront from "@userfront/react";
 
 const cardStyle = {
     style: {
@@ -30,6 +32,9 @@ const cardStyle = {
   };
 
 export default function PayamentForm() {
+    const { id } = useParams();
+    Userfront.init("6bgm6jgb");
+    const userFrontuser = Userfront.user;
     const [success, setSuccess] = useState(false)
     const [processing, setProcessing] = useState('');
     const stripe = useStripe();
@@ -37,36 +42,49 @@ export default function PayamentForm() {
     const [firstName, setFirstName] = useState('Nick');
     const [lastName, setLastName] = useState('Jones');
     const [phoneNumber, setPhoneNumber] = useState('0771234678');
-    const [email, setEmail] = useState('dwa@gmail.com');
-    const [invoice, setInvoice] = useState({
-      firstName,
-      lastName,
-      phoneNumber,
-      email
-    });
+    // const [email, setEmail] = useState(userFrontuser.email);
+    const email = userFrontuser.email;
+    const [testName, setTestName] = useState();
+    const [invoiceId, setInvoiceId] = useState();
+    const username = userFrontuser.username;
+ 
+    //Appoinment Post Request
+    useEffect(() => {
+      Axios.get("http://localhost:5000/appmntt")
+      .then((response) => {
+          setTestName(response.data[id-1].testName);
+      })     
+    },[])
+
     const [startDate, setStartDate] = useState();
-    var num = Math.floor(Math.random() * 90000) + 10000;
+// let invoiceId = Math.floor(Math.random() * 90000) + 10000;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
+    
 
     try{
       await axios.post('http://localhost:5000/createUser',{
         firstName,
         lastName,
         email,
-        phoneNumber
+        phoneNumber,
+        testName,
+        invoiceId,
+        startDate,
+        username
       } ).then(res => {
+        setInvoiceId(() => (Math.floor(Math.random() * 90000) + 10000));
+        console.log(invoiceId);
         // const data = res.data;
-        setInvoice({
-          firstName: setFirstName,
-          lastName: setLastName,
-          phoneNumber : setPhoneNumber,
-          email : setEmail
-        })
-        console.log(firstName + 'Hri');
+        console.log(firstName + 'Hri')
+        // console.log(invoiceId)
+        // console.log(startDate)
         
+
+
+
       }).catch((error) => {
         if (error.response) {
           console.log(error.response);
@@ -106,19 +124,27 @@ export default function PayamentForm() {
     }else{
         console.log(error.message)
         setProcessing(false);
+      }
     }
-    }
-
-
 
   return (
     <div>
 
-  
-
          {!success ? 
         <form  className="mx-auto justify-items-center align-items-center"  onSubmit={handleSubmit} id="payment-form">
             <fieldset className="FormGroup">
+            <div className="row mb-3">
+                  <label for="inputEmail3" className="col-sm-2 col-form-label">Email Address</label>
+                  <div className="col-sm-10">
+                    <input type="email" value={email} disabled className="form-control" id="inputEmail3" />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label for="inputEmail3" className="col-sm-2 col-form-label">User Name</label>
+                  <div className="col-sm-10">
+                    <input type="email" value={username} disabled className="form-control" id="inputUserId3" />
+                  </div>
+                </div>
               <div className="row mb-3">
                   <label for="inputEmail1" className="col-sm-2 col-form-label">First Name</label>
                   <div className="col-sm-10">
@@ -131,12 +157,7 @@ export default function PayamentForm() {
                     <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} className="form-control" id="inputEmail2" required/>
                   </div>
                 </div>
-                <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label">Email Address</label>
-                  <div className="col-sm-10">
-                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="form-control" id="inputEmail3" required/>
-                  </div>
-                </div>
+
                 <div className="row mb-3">
                   <label for="inputPassword3" className="col-sm-2 col-form-label">Phone Number</label>
                   <div className="col-sm-10">
@@ -206,12 +227,20 @@ export default function PayamentForm() {
            <h2 className='text-center p-3'> Invoice  </h2>
            <fieldset className="FormGroup p-2">
               <div className="row mb-3">
-                  <label for="inputEmail1" className="col-sm-2 col-form-label">Invoice Number</label>
-                  <div className="col-sm-10">
-                    <input type="text" value={num} className="form-control" id="inputEmail1" disabled/>
-                  </div>
-                  <p className='text-center text-success' > Provide the invoice number when you visit the laboratory </p>
-                </div> 
+              <label for="inputEmail1" className="col-sm-2 col-form-label">Invoice Number</label>
+              <div className="col-sm-10">
+                <input type="text" value={invoiceId} className="form-control" id="inputEmail1" disabled/>
+              </div>
+              <p className='text-center text-success'> Provide the invoice number when you visit the laboratory </p>
+              </div> 
+
+              <div className="row mb-3">
+              <label for="inputEmail1" className="col-sm-2 col-form-label">User Name</label>
+              <div className="col-sm-10">
+                <input type="text" value={username} className="form-control" id="inputUserID1" disabled/>
+              </div>
+              </div> 
+
               <div className="row mb-3">
                   <label for="inputEmail1" className="col-sm-2 col-form-label">First Name</label>
                   <div className="col-sm-10">

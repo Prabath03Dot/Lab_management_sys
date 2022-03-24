@@ -4,7 +4,7 @@ import React from "react";
 
 export const ProtectedRoute = ({ component }) => {
   const Component = withAuthenticationRequired(component, {
-    onRedirecting: () => <div className="justify-items-center align-items-center">Loading...</div> ,
+    onRedirecting: () =><div><center className="justify-content-center justify-content-center mt-5 pt-5 mx-auto fs-1">Loading...</center></div> ,
   });
 
   return <Component />;

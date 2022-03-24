@@ -4,8 +4,6 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
-    GoogleAuthProvider,
-    signInWithPopup,
     sendPasswordResetEmail 
 } from 'firebase/auth';
 
@@ -51,8 +49,8 @@ export function UserAuthContextProvider({ children}) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log("Auth", currentuser);
-      console.log(currentuser);
+      // console.log("Auth", currentuser);
+      // console.log(currentuser);
       setUser(currentuser);
     });
 

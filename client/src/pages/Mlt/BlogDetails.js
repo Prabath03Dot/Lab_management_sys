@@ -20,6 +20,10 @@ export default function BlogDetails() {
     
     const roleAdmin = Userfront.user.hasRole("admin");
     const roleMlt = Userfront.user.hasRole("member");
+    const roleUser = !(roleMlt && roleAdmin);
+    // console.log(roleUser);
+    // console.log(roleMlt);
+    // console.log(roleAdmin);
     
     const handleLogout =  async () => {
         try{
@@ -80,9 +84,15 @@ export default function BlogDetails() {
                 />
                 </div> 
 
-                { !roleAdmin && ( <button className='btn btn-primary text-light mt-3 mx-2'>
+                { (!roleAdmin && roleUser) && ( <button className='btn btn-primary text-light mt-3 mx-2'>
                     <Link className=' text-light text-decoration-none ' to={`/blog/${cDetails._id}/edit`}>Edit Blog Content</Link>
-                </button>)}   
+                </button>)}  
+                {/* { !roleAdmin ?  ( <button className='btn btn-primary text-light mt-3 mx-2'>
+                    <Link className=' text-light text-decoration-none ' to={`/blog/${cDetails._id}/edit`}>Edit Blog Content</Link>
+                </button>): <></> }  */}
+                {/* { (roleUser && !roleAdmin ) ?  ( <button className='btn btn-primary text-light mt-3 mx-2'>
+                    <Link className=' text-light text-decoration-none ' to={`/blog/${cDetails._id}/edit`}>Edit Blog Content</Link>
+                </button>): <></> }  */}
 
             </div>
         </div>
