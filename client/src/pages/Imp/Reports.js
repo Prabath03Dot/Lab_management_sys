@@ -9,6 +9,7 @@ export default function Dashboard() {
   const { id } = useParams();
   const [userDate, setUserDate] = useState();
   Userfront.init("6bgm6jgb");
+  const userFrontuser = Userfront.user;
   const username = userFrontuser.username;
 
   //Appoinment Post Request
@@ -72,7 +73,9 @@ export default function Dashboard() {
 
     {userDate.filter(data => data.username === username)
     .map((datas) => (
-      <div key={}></div>
+      <div key={datas._id}>
+        
+      </div>
     ) ) }
 
     </main>
