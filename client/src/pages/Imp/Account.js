@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 import '../../css/dashboard.css';
 import img1 from '../../images/flask.png'
 import Userfront from "@userfront/react";
@@ -7,6 +7,8 @@ import Userfront from "@userfront/react";
 export default function Dashboard() {
     Userfront.init("6bgm6jgb");
     const userFrontuser = Userfront.user;
+    const navigate = useNavigate();
+
     const [name, setName] = useState(userFrontuser.name);
     Userfront.user.update({
         name: setName,
@@ -15,23 +17,19 @@ export default function Dashboard() {
         // },
       });
 
-    const handleSubmit = () => {
-
-    }
 
   return (
     <div>
 
-  
 <header className="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow-sm">
   <Link className="navbar-brand bg-light col-md-3 col-lg-2 me-0 px-3 fs-4 fw-bold text-secondary" to='/home'>MediTech</Link>
   <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
-  <input className="form-control form-control-dark w-100" s aria-label="Search"/>
+  <input className="form-control form-control w-100 bg-light" type="text"  aria-label="Search" disabled/>
   <div className="navbar-nav">
     <div className="nav-item text-nowrap">
-      <a className="nav-link px-3" href="#">Sign out</a>
+    <div className="nav-link px-3 text-decoration-underline" onClick={()=>navigate(-1)}><i className="bi bi-arrow-left"></i>   Go Back</div>
     </div>
   </div>
 </header>
@@ -44,13 +42,13 @@ export default function Dashboard() {
           <li className="nav-item">
             <Link className="nav-link active fs-5" aria-current="page" to='/account'>
               <span ></span>
-              Account
+              <i class="bi bi-file-person"></i> Account
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link fs-5" to="/reports">
               <span data-feather="layers"></span>
-              Reports
+              <i class="bi bi-file-earmark-text"></i> Reports
             </Link>
           </li>
         </ul>
@@ -67,7 +65,7 @@ export default function Dashboard() {
                 <div class="mb-3">
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" className="form-label">UserID</label>
-                    <input type="email" name="user_email" disabled value= {userFrontuser.userId}
+                    <input type="text" name="user_email" disabled value= {userFrontuser.userId}
                     className="form-control" id="exampleFormControlInput2" />
                 </div>
 
@@ -76,14 +74,12 @@ export default function Dashboard() {
                     type="text" 
                     className="form-control"
                     value= {name}  disabled
-                    // onChange={(e) => userFrontuser.update({name: e.target.value})}
-                    // name="user_name" 
-                    //id="exampleFormControlInput1"                         
+                       
                     />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" className="form-label">User Name</label>
-                    <input type="email" name="user_email" disabled value= {userFrontuser.username}
+                    <input type="text" name="user_email" disabled value= {userFrontuser.username}
  className="form-control" id="exampleFormControlInput2" placeholder="name@example.com"/>
                 </div>
 

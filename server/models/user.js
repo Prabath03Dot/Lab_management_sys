@@ -8,7 +8,9 @@ const userSchema = new mongoose.Schema({
     testName: String,
     invoiceId: Number,
     startDate:String,
-    username: String
+    username: String,
+    gender: String,
+    age: Number
 });
 
 const User = mongoose.model('user', userSchema);

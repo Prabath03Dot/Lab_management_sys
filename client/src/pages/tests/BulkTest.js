@@ -13,8 +13,9 @@ export default function BulkTest() {
         <NavigationBar/>
 
             {/* Bulk Test Component */}
-            <h1 className='text-center fw-1 mt-2 py-3'>Choose Your Subscription Plan</h1>
-            <div className='container mt-3'>
+            <div className='container mt-5 p-4'>
+            <div className='text-secondary fs-1 mb-4'>Choose Your Subscription Plan</div>
+
             <div className="card-group">
             <div className="card">
                 <img src={img1} className="card-img-top" alt='chemistry.jpg' />

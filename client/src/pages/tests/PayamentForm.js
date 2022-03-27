@@ -42,11 +42,13 @@ export default function PayamentForm() {
     const [firstName, setFirstName] = useState('Nick');
     const [lastName, setLastName] = useState('Jones');
     const [phoneNumber, setPhoneNumber] = useState('0771234678');
-    // const [email, setEmail] = useState(userFrontuser.email);
     const email = userFrontuser.email;
     const [testName, setTestName] = useState();
     const [invoiceId, setInvoiceId] = useState();
     const username = userFrontuser.username;
+    const [gender, setGender] = useState();
+    const [age, setAge] = useState(18);
+    const [loading, setLoading] = useState(false);
  
     //Appoinment Post Request
     useEffect(() => {
@@ -57,11 +59,11 @@ export default function PayamentForm() {
     },[])
 
     const [startDate, setStartDate] = useState();
-// let invoiceId = Math.floor(Math.random() * 90000) + 10000;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
+    setLoading(true);
     
 
     try{
@@ -73,7 +75,9 @@ export default function PayamentForm() {
         testName,
         invoiceId,
         startDate,
-        username
+        username,
+        gender,
+        age
       } ).then(res => {
         setInvoiceId(() => (Math.floor(Math.random() * 90000) + 10000));
         console.log(invoiceId);
@@ -82,9 +86,6 @@ export default function PayamentForm() {
         // console.log(invoiceId)
         // console.log(startDate)
         
-
-
-
       }).catch((error) => {
         if (error.response) {
           console.log(error.response);
@@ -116,6 +117,7 @@ export default function PayamentForm() {
                 console.log("success payment");
                 setSuccess(true);
                 setProcessing(true);
+                setLoading(true);
                 
             }
         }catch(error) {
@@ -124,8 +126,10 @@ export default function PayamentForm() {
     }else{
         console.log(error.message)
         setProcessing(false);
+        setLoading(false);
       }
     }
+
 
   return (
     <div>
@@ -134,38 +138,54 @@ export default function PayamentForm() {
         <form  className="mx-auto justify-items-center align-items-center"  onSubmit={handleSubmit} id="payment-form">
             <fieldset className="FormGroup">
             <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label">Email Address</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">Email Address</label>
                   <div className="col-sm-10">
                     <input type="email" value={email} disabled className="form-control" id="inputEmail3" />
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label">User Name</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">User Name</label>
                   <div className="col-sm-10">
                     <input type="email" value={username} disabled className="form-control" id="inputUserId3" />
                   </div>
                 </div>
               <div className="row mb-3">
-                  <label for="inputEmail1" className="col-sm-2 col-form-label">First Name</label>
+                  <label for="inputEmail1" className="col-sm-2 col-form-label text-end">First Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} className="form-control" id="inputEmail1" required/>
                   </div>
                 </div> 
-              <div className="row mb-3">
-                  <label for="inputEmail2" className="col-sm-2 col-form-label">Last Name</label>
+                <div className="row mb-3">
+                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Last Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} className="form-control" id="inputEmail2" required/>
                   </div>
                 </div>
-
+              <div className="row mb-3">
+                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Gender</label>
+                  <div className="col-sm-10">
+                  <select required className="form-select" aria-label="Default select example" 
+                  onChange={e => setGender(e.target.value)}>
+                    {/* <option >Select Gender</option> */}
+                    <option selected value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select></div>
+                </div>
+                {/* <div>vvd {gender}</div> */}
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label">Phone Number</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Age</label>
+                  <div className="col-sm-10">
+                    <input type="number" value={age} onChange={e => setAge(e.target.value)} className="form-control" id="inputEmail2" required/>
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Phone Number</label>
                   <div className="col-sm-10">
                     <input type="text" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} className="form-control" id="inputPassword3" required/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label">Time Slot</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Time Slot</label>
                   <div className="col-sm-10">
                     <DatePicker
                       selected={startDate}
@@ -209,64 +229,91 @@ export default function PayamentForm() {
                 </div>
 
           <div className="FormRow mb-3 mt-3">
-          <label for="inputPassword4" className="col-sm-2 col-form-label">Card Details</label>
+          <label for="inputPassword4" className="col-sm-2 col-form-label text-end">Card Details</label>
 
                     <CardElement id="card-element" options={cardStyle}/>
                 </div>
             </fieldset>
-            <button id="submit" className="btn btn-primary my-2 w-100" type="submit">
+            {loading ?  <button id="submit" className="btn btn-primary my-2 w-100" type="submit" disabled>
             {processing ? (
-            <div className="d-inline"><div className="spinner" id="spinner"></div> Processing...</div>
+            <div className="d-inline">
+            <div className="spinner" id="spinner"></div> Processing...</div>
+          ): (<div><i class="bi bi-lock"></i> Pay</div> ) }</button> : 
+          <button id="submit" className="btn btn-primary my-2 w-100" type="submit" >
+            {processing ? (
+            <div className="d-inline">
+            <div className="spinner" id="spinner"></div> Processing...</div>
           ): (<div><i class="bi bi-lock"></i> Pay</div> ) }</button>
+          }
 
+          <div>4242 4242 4242 4242</div>
         </form>
         :
-       <div className="container bg-success my-3 py-5">
-           <h2 className='text-light text-center my-5'> <i class="bi bi-check"></i> Test order Succesfull</h2>
-           <div className='bg-light p-3 border-light'> 
+       <div className="container bg-success bg-gradient rounded mb-5 pb-3">
+           <h2 className='text-light text-center p-3'> <i class="bi bi-check"></i> Test order Succesfull</h2>
+           <div className='bg-light p-3 border-light rounded p-4'> 
            <h2 className='text-center p-3'> Invoice  </h2>
            <fieldset className="FormGroup p-2">
               <div className="row mb-3">
-              <label for="inputEmail1" className="col-sm-2 col-form-label">Invoice Number</label>
+              <label for="inputEmail1" className="col-sm-2 col-form-label text-end">Invoice Number</label>
               <div className="col-sm-10">
                 <input type="text" value={invoiceId} className="form-control" id="inputEmail1" disabled/>
               </div>
               <p className='text-center text-success'> Provide the invoice number when you visit the laboratory </p>
               </div> 
-
               <div className="row mb-3">
-              <label for="inputEmail1" className="col-sm-2 col-form-label">User Name</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Test Name</label>
+                  <div className="col-sm-10">
+                    <input type="text" value={testName} className="form-control" id="inputEmail2" disabled/>
+                  </div>
+                </div>
+              <div className="row mb-3">
+              <label for="inputEmail1" className="col-sm-2 col-form-label text-end">User Name</label>
               <div className="col-sm-10">
                 <input type="text" value={username} className="form-control" id="inputUserID1" disabled/>
               </div>
               </div> 
 
               <div className="row mb-3">
-                  <label for="inputEmail1" className="col-sm-2 col-form-label">First Name</label>
+                  <label for="inputEmail1" className="col-sm-2 col-form-label text-end">First Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={firstName} className="form-control" id="inputEmail1" disabled/>
                   </div>
                 </div> 
               <div className="row mb-3">
-                  <label for="inputEmail2" className="col-sm-2 col-form-label">Last Name</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Last Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={lastName} className="form-control" id="inputEmail2" disabled/>
                   </div>
                 </div>
+
                 <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label">Email Address</label>
+                  <label for="inputEmail7" className="col-sm-2 col-form-label text-end">Gender</label>
+                  <div className="col-sm-10">
+                    <input type="text" value={gender} className="form-control" id="inputEmail7" disabled/>
+                  </div>
+                </div>
+
+                <div className="row mb-3">
+                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Age</label>
+                  <div className="col-sm-10">
+                    <input type="text" value={age} className="form-control" id="inputEmail2" disabled/>
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">Email Address</label>
                   <div className="col-sm-10">
                     <input type="email" value={email} className="form-control" id="inputEmail3" disabled/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label">Phone Number</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Phone Number</label>
                   <div className="col-sm-10">
                     <input type="text" value={phoneNumber} className="form-control" id="inputPassword3" disabled/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label">Time Slot</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Time Slot</label>
                   <div className="col-sm-10">
                     <input type="text" value={startDate} className="form-control" id="inputPassword3" disabled/>
                   </div>
@@ -275,7 +322,7 @@ export default function PayamentForm() {
             </div>
        </div> 
         }
-        <Link to="/appmnt" className='text-dark py-5 my-3'><i class="bi bi-arrow-left"></i>  Back to appointments page </Link>
+       <div  > <Link to="/appmnt" className='text-dark my-5'><i class="bi bi-arrow-left"></i>  Back to appointments page </Link></div>
 
     </div>
   )

@@ -17,50 +17,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { SignupForm, LoginForm, PasswordResetForm ,LogoutButton} from "../signUpIn/useFront";
 import Userfront from "@userfront/react";
 import NavigationBar from './NavigationBar';
+import '../../css/Home.css'
 
 const MainHome = () => {
     Userfront.init("6bgm6jgb");
     const navigate = useNavigate();
     const userFrontuser = Userfront.user;
-    // console.log(Userfront.tokens.accessToken);
-    // if(userFrontuser.email === 'admin@example.com' || Userfront.user.hasRole("admin")){
-    //     console.log('fsfs');
-    //     navigate('/appmnt')
-    //     //Userfront.redirectIfLoggedIn('http://localhost:3000/appmnt');
-    // }
-    //console.log(Userfront.user.hasRole("admin"));
-
-    // //Example with verified access token
-    // var roles = verifiedAccessToken.authorization["6bgm6jgb"].roles;
-
-    // if (roles.includes["admin"]) {
-    // console.log(roles.includes["admin"]);
-    // } else {
-    // // Return 401 error
-    // }
-
-    // const auth = getAuth();
-    // // const {user, logOut } = useUserAuth();
-    // const { loginWithRedirect, isAuthenticated, logout, error, isLoading, user} = useAuth0();
-
-    // const handleLogout =  async () => {
-    //     try{
-    //         await logOut();
-    //         navigate('/');
-            
-    //     }catch(err){
-    //         console.log(err.message)
-    //     }
-    // }
-
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) {
-    //       console.log("user signed In");
-    //     } else {
-    //         console.log("user signed Out");
-    //     }
-    //   });
-
+ 
     return (
 <div> 
     
@@ -77,8 +40,8 @@ const MainHome = () => {
         <h1 className="display-5 fw-bold lh-1 mb-3">" We depends on the Quality "</h1>
         <p className="lead">With a fully equipped modern laboratory, and a team of staff working round the clock to provide high-quality laboratory investigations is available at Meditech laboratory. Recently our laboratory services have extended in such a way that the patient does not have to visit the hospital, which that lab service bring to your doorsteps.</p>
         <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button type="button" className="btn btn-primary  px-4 me-md-2">Find Test</button>
-            <button type="button" className="btn btn-outline-secondary  px-4">Make an appointment</button>
+            <button type="button" className="btn btn-primary  px-4 me-md-2"><Link className='text-light text-decoration-none' to='/findtest'>Find Test</Link></button>
+            <button type="button" className="btn btn-outline-secondary  px-4" ><Link className=' text-decoration-none' to='/appmnt' id='make'> Make An Appointment</Link></button>
         </div>
         </div>
     </div>
@@ -95,7 +58,7 @@ const MainHome = () => {
 
     {/* Services */}
     <div className="container px-3 py-5" id="icon-grid">
-        <h2 className="pb-2 border-bottom">Our Valuable Services</h2>
+        <h2 className="pb-4 border-bottom">Our Valuable Services</h2>
         <div>
             <div className="row text-light py-2">
                 <div className="col-sm d-flex align-items-center py-2">
@@ -140,93 +103,147 @@ const MainHome = () => {
 
     {/* CountDown */}
     <div className="container px-4 py-3" id="featured-3">
-        <h2 className="pb-2 border-bottom">Our Numbers</h2>
+        <h2 className="pb-4 border-bottom">Our Numbers</h2>
 
         <div className="card-group  text-center p-3">
         <div className="card ">
             <div className="card-body">
-                <div className="card-title">
+                <div className="card-title text-center">
                     <img src={svg4} className="card-img-top w-50" alt="..."/>
                 </div>
-                <h1 className="card-title py-2 fw-bold ">4000+</h1>
-                <p className="card-text">Customers</p>
+                <h1 className="card-title text-center py-2 fw-bold ">4000+</h1>
+                <p className="card-text mt-5 p-3">Customers</p>
             </div>
         </div>
         <div className="card ">
             <div className="card-body">
-            <div className="card-title">
+            <div className="card-title text-center">
             <img src={svg1} className="card-img-top w-50" alt="..."/>
             </div>
-            <h1 className="card-title py-2 fw-bold">1000+</h1>
-            <p className="card-text">Lab Tests</p>
+            <h1 className="card-title text-center py-2 fw-bold">1000+</h1>
+            <p className="card-text mt-5 p-3">Lab Tests</p>
             </div>
         </div>
         <div className="card ">
             <div className="card-body">
-            <div className="card-title">
+            <div className="card-title text-center">
             <img src={svg3} className="card-img-top w-50" alt="..."/>
             </div>
-            <h1 className="card-title py-2 fw-bold">50+</h1>
-            <p className="card-text">Members</p>
+            <h1 className="card-title text-center py-2 fw-bold">50+</h1>
+            <p className="card-text mt-5 p-3">Members</p>
             </div>
         </div>
         <div className="card ">
             <div className="card-body">
 
-            <div className="card-title">
+            <div className="card-title text-center">
             <img src={svg2} className="card-img-top w-50" alt="..."/>
             </div>
-            <h1 className="card-title py-2 fw-bold">5</h1>
-            <p className="card-text">Awards</p>
+            <h1 className="card-title text-center py-2 fw-bold">5</h1>
+            <p className="card-text mt-5 p-3">Awards</p>
             </div>
         </div>
         </div>
   
     </div>
 
-    {/* <hr className="pt-1 container my-2"></hr> */}
-
-
 
     {/* News & Events */}
     <div className="container py-2">
-    <h2 className="pb-2 border-bottom ">News & Events</h2>
-        <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
+    <h2 className="pb-2 border-bottom ">Customer Testimonial</h2>
+    
+        <div id="carouselExampleCaptions" className="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
     <div className="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        {/* <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button> */}
     </div>
     <div className="carousel-inner py-2">
         <div className="carousel-item active">
-        <img src={image2} className="d-block w-100" alt="..."/>
-        <div className="carousel-caption d-none d-md-block text-start">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+
+        <div className="card-group ">
+        <div className="card">
+            <img src='https://www.seekpng.com/png/small/202-2024695_how-to-set-use-profile-icon-clipart.png' className="card-img-top" alt='https://www.seekpng.com/png/small/202-2024695_how-to-set-use-profile-icon-clipart.png' />
+            <div className="card-body ">
+            
+            <p className="card-text mt-5 p-3">“Very friendly and helpful. Turnaround time exceeded expectations. Stayed in contact before and after analysis. The report was just what we wanted.”</p>
+            </div>
+            <div className="card-footer text-end py-4">
+      <small className="text-muted text-end fst-italic"> - Ajith Kumara</small>
+    </div>
         </div>
+        <div className="card">
+            <img src='https://www.seekpng.com/png/small/202-2024695_how-to-set-use-profile-icon-clipart.png' className="card-img-top" alt={image2}/>
+            <div className="card-body">
+            
+            <p className="card-text mt-5 p-3">“ I greatly appreciate the communication on the process, what we needed to do in terms of providing samples, what to expect. MediTech Labs provided what we needed in terms of certification that we can use with our customers.”</p>
+            </div>
+            <div className="card-footer text-end py-4">
+      <small className="text-muted text-end fst-italic"> - Rajitha Perera</small>
+    </div>
+
+        </div>
+        <div className="card">
+            <img src='https://www.seekpng.com/png/small/202-2024695_how-to-set-use-profile-icon-clipart.png' className="card-img-top" alt={image2}/>
+            <div className="card-body">
+            <p className="card-text mt-5 p-3">“Provides an excellent customer service that I saw in my life regarding laboratory services.”</p>
+             </div>
+             <div className="card-footer text-end py-4">
+      <small className="text-muted text-end fst-italic"> - Nipuna Fernando</small>
+    </div>
+        </div>
+        </div>
+        
         </div>
         <div className="carousel-item">
-        <img src={image2} className="d-block w-100" alt="..." />
-        <div className="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
+
+        <div className="card-group ">
+        <div className="card">
+            <img src='https://www.seekpng.com/png/small/202-2024695_how-to-set-use-profile-icon-clipart.png' className="card-img-top" alt={image2}/>
+            <div className="card-body ">
+            
+            <p className="card-text mt-5 p-3">“Supportive staff and has most of the common laboratory services including blood and urine tests.”</p>
+            </div>
+            <div className="card-footer text-end py-4">
+      <small className="text-muted text-end fst-italic"> - Supun Gamge</small>
+    </div>
+        </div>
+
+        <div className="card">
+            <img src='https://www.seekpng.com/png/small/202-2024695_how-to-set-use-profile-icon-clipart.png' className="card-img-top" alt={image2}/>
+            <div className="card-body">
+            
+            <p className="card-text mt-5 p-3">“Amazing experience. Reliable, convenient and fast.”</p>
+            </div>
+            <div className="card-footer text-end py-4">
+      <small className="text-muted text-end fst-italic"> - Ravi Jacob</small>
+    </div>
+
+
+        </div>
+
+        <div className="card">
+            <img src='https://www.seekpng.com/png/small/202-2024695_how-to-set-use-profile-icon-clipart.png' className="card-img-top" alt={image2}/>
+            <div className="card-body ">
+            
+            <p className="card-text  mt-5 p-3">“Place that provides better results & quick service.”</p>
+            </div>
+            <div className="card-footer text-end py-4">
+      <small className="text-muted text-end fst-italic"> - Vinayamurthy R.</small>
+    </div>
         </div>
         </div>
-        <div className="carousel-item">
-        <img src={image2} className="d-block w-100" alt="..."/>
-        <div className="carousel-caption d-none d-md-block text-end">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+
         </div>
-        </div>
+ 
     </div>
     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
+        {/* <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Previous</span> */}
     </button>
     <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
+        {/* <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Next</span> */}
     </button>
         </div>
     </div>

@@ -32,6 +32,9 @@ import Profile from './pages/Imp/Profile';
 import Dashboard from './pages/Imp/Dashboard';
 import Account from './pages/Imp/Account';
 import Reports from './pages/Imp/Reports';
+import News from './pages/Imp/News';
+import Events from './pages/Imp/Events';
+import Pvc from './pages/Imp/pvc';
 
 function App() {
   const { isLoading } = useAuth0();
@@ -70,21 +73,17 @@ function App() {
             <RequireAuth> <Account></Account> </RequireAuth>
           } ></Route>
 
-          <Route path="/reports" element={
+          {(!roleAdmin && !roleMlt) && <Route path="/reports" element={
             <RequireAuth> <Reports></Reports> </RequireAuth>
-          } ></Route>
+          } ></Route>}
 
           <Route path="/dashboard" element={
             <RequireAuth> <Dashboard></Dashboard> </RequireAuth>
           } ></Route>
 
-        <Route path="/about" element={<About />}></Route> 
+          <Route path="/about" element={<About />}></Route> 
 
-          <Route path="/findtest" element={
-           
-              <FindTest></FindTest>
-            
-          }></Route>
+          <Route path="/findtest" element={<FindTest></FindTest>}></Route>
 
           <Route path="/appmnt" element={<Appmnt></Appmnt>}></Route>
 
@@ -94,11 +93,7 @@ function App() {
             </RequireAuth>
           }></Route>}
 
-          <Route path="/bulk" element={
-            
-              <BulkTest></BulkTest>
-            
-          }></Route>
+          <Route path="/bulk" element={<BulkTest></BulkTest>}></Route>
 
           {!roleMlt && <Route path="/bulkform" element={
             <RequireAuth>
@@ -130,6 +125,12 @@ function App() {
             </RequireAuth>
           }></Route>}
 
+          {/* News & Events */}
+          <Route path="/news" element={<News></News>}></Route>
+          <Route path="/careers" element={<Events></Events>}></Route>
+
+
+          <Route path="/pvc" element={<Pvc></Pvc>}></Route>
 
 
           <Route path="*" element={<Error />}></Route>  

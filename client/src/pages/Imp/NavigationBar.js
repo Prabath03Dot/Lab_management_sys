@@ -10,12 +10,7 @@ import NavBar from './Navbar';
 import image3 from '../../images/girl_lab1.jpg';
 import { Link,useNavigate } from "react-router-dom";
 import '../../css/Home.css';
-import svg1 from '../../images/flask.png';
-import svg2 from '../../images/trophy.png';
-import svg3 from '../../images/test-tube.png';
-import svg4 from '../../images/microscope (1).png';
-import { useUserAuth } from '../../Context/userAuthContext';
-import { onAuthStateChanged,getAuth } from "firebase/auth";
+
 import Container from 'react-bootstrap/Container' 
 
 export default function NavigationBar() {
@@ -52,49 +47,18 @@ export default function NavigationBar() {
 
     <Navbar >
     <Container>
-    <div className="text-secondary fs-4 px-2"> <Link className='text-secondary text-decoration-none' to='/home'>MediTech</Link> </div>
+    <div className="text-secondary fs-4 px-2"> <Link className='text-secondary text-decoration-none' to='/'>MediTech</Link> </div>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-        <div className="d-flex">
-        
-         {/* <button className="btn btn-primary btn-sm rounded-0 rounded-start px-2"> <Link className="text-light text-decoration-none" to='/useLogin'> Login </Link> </button>
-         <button className="btn btn-primary btn-sm rounded-0 rounded-end px-2"> <Link className="text-light text-decoration-none" to='/useSignUp'> SignUp </Link> </button> */}
-         {!Userfront.tokens.accessToken ? <></>: <LogoutButton />} 
-            {/* { error && <div>Authetication Error...</div> }
-            { !error && isLoading && <button className="btn btn-primary" type="button" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Authenticating...</button> }
-            { !error && !isLoading && (
-                <>
-                   {!isAuthenticated && (
-                <button className="btn btn-primary" type="button" onClick={() => loginWithRedirect()}>Log In</button>
-            ) }
-            {isAuthenticated && (
-                <button className="btn btn-primary" type="button" onClick={() => logout({ returnTo: window.location.origin })}>Log Out</button>
-            ) } 
-                </>
-            ) } */}
-
+        <div className="d-flex justify-content-end">
+        {!Userfront.tokens.accessToken ? <div>
+            <button className="btn btn-primary btn-sm rounded-0 rounded-start px-2"> <Link className="text-light text-decoration-none" to='/useLogin'> Login </Link> </button>
+         <button className="btn btn-primary btn-sm rounded-0 rounded-end px-2"> <Link className="text-light text-decoration-none" to='/useSignUp'> SignUp </Link> </button>
+        </div> : <div className="d-flex justify-content ">
+       <div className=' ms-5'><LogoutButton /></div> 
             
             
-            <form className="d-flex">
-                {/* <input className="form-control me-2 border-0" type="search" placeholder="Search" aria-label="Search" />  */}
                  <div className='text-center pt-1'>
-                 {/* {user && user.email} */}
-
-                 {/* {isAuthenticated && (
-                <div> {user.email} </div>
-                ) }
-                 */}
-                    
-                    {/* <li className="nav-item dropdown mx-2">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {userFrontuser.email}
-                        </a>
-                        <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink1">
-                            <li><a className="dropdown-item drp" href="#">Action</a></li>
-                            <li><a className="dropdown-item drp" href="#">Another action</a></li>
-                            <li><a className="dropdown-item drp" href="#">Something else here</a></li>
-                        </ul>
-                    </li> */}
 
                     <div className="dropdown">
                     <div className="dropdown-toggle nav-link text-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -102,13 +66,13 @@ export default function NavigationBar() {
                     </div>
                     <ul className="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1">
                         <li><Link className="dropdown-item drp" to="/account">Account</Link></li>
-                        <li><Link className="dropdown-item drp" to="/dashboard">Dashboard</Link></li>
+                        <li><Link className="dropdown-item drp" to="/reports">Reports</Link></li>
+                        
                     </ul>
                     </div>
                  </div> 
-                
-                {/* <button className="btn btn-outline-success border border-0" type="submit"><i class="bi bi-search"></i></button> */}
-            </form>
+
+            </div> } 
         </div>
         
         </Navbar.Collapse>
@@ -154,19 +118,25 @@ export default function NavigationBar() {
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink2">
                 <li><Link className="dropdown-item drp" to="/blog">Blogs</Link></li>
                 <li><Link className="dropdown-item drp" to="/blogEdit">Create Blog</Link></li>
-                {/* <li><a className="dropdown-item drp" href="#">Something else here</a></li> */}
             </ul>
             </li>
-
+{/* 
             <li className="nav-item dropdown mx-2">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 News & Events
             </a>
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink3">
-                <li><a className="dropdown-item drp" href="#">News</a></li>
-                <li><a className="dropdown-item drp" href="#">Events</a></li>
+                <li><Link className="dropdown-item drp" to="/news">News</Link></li>
+                <li><Link className="dropdown-item drp" href="/events">Events</Link></li>
             </ul>
-            </li>
+            </li> */}
+
+            <Link className="nav-link mx-2" to="/news" role="button">
+                News
+            </Link>
+            <Link className="nav-link mx-2" to="/careers" role="button">
+               Careers
+            </Link>
 
             {/* <li className="nav-item dropdown mx-2">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-bs-toggle="dropdown" aria-expanded="false">

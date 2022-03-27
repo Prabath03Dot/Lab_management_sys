@@ -37,8 +37,9 @@ const BookTest = () => {
        <NavigationBar/>
 
         
-        <div className="text-center fs-1 mt-5 mb-3">Book Test Appoinmnet</div>
-        <div className="bg-light container">
+        <div className="container p-4">
+        <div className="text-secondary fs-1 mt-5 mb-2">Book Test Appoinmnet | Checkout Section </div>
+
         {    
             testList.filter(tests => tests.test_id === id )
             .map((test) => (
@@ -69,8 +70,7 @@ const BookTest = () => {
         </div>
 
 
-        <div className="container p-5 bg-light">
-        <h3 className="py-2">Checkout Section</h3>
+        <div className="container p-5 ">
           <Elements stripe={stripeTestPromise} >
             <PayamentForm />
           </Elements>

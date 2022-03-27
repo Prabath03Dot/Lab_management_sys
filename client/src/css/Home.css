@@ -40,4 +40,10 @@ background: linear-gradient(to right, #3f2b96, #a8c0ff); /* W3C, IE 10+/ Edge, F
     
 }
 
+#make{
+    color: gray;
+}
+#make:hover{
+    color: white;
 
+}

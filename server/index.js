@@ -52,7 +52,9 @@ app.post('/createUser', async (req,res) => {
 			testName: req.body.testName,
 			invoiceId: req.body.invoiceId,
 			startDate: req.body.startDate,
-			username: req.body.username
+			username: req.body.username,
+			gender: req.body.gender,
+			age: req.body.age
 		})
 		res.json({ status: 'ok'});
 	}catch(err){

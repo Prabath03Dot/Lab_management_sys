@@ -1,20 +1,23 @@
-import React, { useRef }  from 'react'
+import React, { useRef,useState }  from 'react'
 import Footerr from './Footer'
 import NavigationBar from './NavigationBar'
 import emailjs from '@emailjs/browser';
 import{ init } from '@emailjs/browser';
 import '../../../node_modules/react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export default function About() {
     const form = useRef();
+const navigate =  useNavigate();
+const [sending, setSending] = useState(false);
+const [loading, setLoading] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+   setSending(true);setLoading(true);
     emailjs.sendForm('service_i2jxyg8', 'template_5s6w4lo', form.current, 'MPfH8EsLBJowtUSyz')
       .then((result) => {
-          console.log(result.text);
           toast.success('Message Sent', {
             position: "bottom-right",
             autoClose: 2500,
@@ -24,10 +27,18 @@ export default function About() {
             draggable: true,
             progress: undefined,
             });
+            
+            
       }, (error) => {
           console.log(error.text);
-      });
+      }).then(
+          navigate('/about')
+      );
+      
+
   };
+
+  
   init("MPfH8EsLBJowtUSyz");
 
   return (
@@ -35,8 +46,8 @@ export default function About() {
 
 <NavigationBar/>
 
-<div className='container my-4'>
-    <div className='fs-1 text-center fw-bold'>About MediTech</div>
+<div className='container mt-5 mb-4 p-4'>
+    <div className='fs-1  text-secondary'>About MediTech</div>
     <div>
     <div className='fs-3 mt-5 bg-light bg-gradient py-2 px-3  rounded'>The best care. Humanly possible</div>
     <p className='fs-5 text-secondary mt-3 p-2'> 
@@ -59,30 +70,26 @@ Whether your priority is giving physicians time back in their day, providing pat
     </div> 
 
     <div className='container mt-5 mx-3 bg-light rounded ' >
-        <div className='fs-1 text-center mt-5 py-2 fw-bold' >Contact With Us</div>
+        <div className='fs-1 text-center mt-5 py-2 fw-bold text-secondary' >Contact With Us</div>
         <div>
             <form className='p-5' ref={form} onSubmit={sendEmail}>
-                {/* <label>Name</label>
-                <input type="text" name="user_name" />
-                <label for="exampleFormControlInput2" className="form-label">Email</label>
-                <input type="email" name="user_email" />
-                <label>Message</label>
-                <textarea name="message" />
-                <input type="submit" value="Send" /> */}
 
-                <div class="mb-3">
+                <div className="mb-3">
                     <label for="exampleFormControlInput1" className="form-label">Name</label>
                     <input type="text" className="form-control" name="user_name" id="exampleFormControlInput1" placeholder="John Doe"/>
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <label for="exampleFormControlInput2" className="form-label">Email address</label>
                     <input type="email" name="user_email" className="form-control" id="exampleFormControlInput2" placeholder="name@example.com"/>
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <label for="exampleFormControlTextarea1" className="form-label">Message</label>
                     <textarea className="form-control"  name="message" id="exampleFormControlTextarea1" placeholder='Enter the message here' rows="3"></textarea>
                 </div>
-                <input type="submit" value="Send" className='btn btn-primary' />         
+                {/* {!loading ? !sending ? <button className='btn btn-primary w-100' >Send</button> :  <button className='btn btn-primary w-100' >Sending...</button> : 
+                !sending ? <button className='btn btn-primary w-100' >Send</button> :  <button className='btn btn-primary w-100' disabled>Sending...</button> } */}
+                {/* {!sending ? :  <button className='btn btn-primary w-100' >Sending...</button> }  */}
+                <button className='btn btn-primary w-100' >Send</button>
             </form>
         </div>
     </div>

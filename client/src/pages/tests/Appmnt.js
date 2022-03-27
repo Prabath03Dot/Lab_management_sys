@@ -10,7 +10,6 @@ import Container from 'react-bootstrap/Container'
 import { useAuth0 } from "@auth0/auth0-react";
 import { SignupForm, LoginForm, PasswordResetForm ,LogoutButton} from "../signUpIn/useFront";
 import Userfront from "@userfront/react";
-import { Navbar } from 'react-bootstrap';
 import NavigationBar from "../Imp/NavigationBar";
 
 
@@ -65,8 +64,9 @@ const Appmnt = () => {
     {/* Navigation Bar */}
     <NavigationBar/>    
 
-    <div className="text-center fs-3 p-2 mt-3">Test Appointments</div>
-    <div className="container mt-3 p-3 ml-3"> 
+    
+    <div className="container mt-5 p-3"> 
+    <div className="fs-1 text-secondary p-2 mb-4">Test Appointments</div>
     <Table hover>
         <thead>
             <tr>
