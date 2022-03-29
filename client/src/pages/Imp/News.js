@@ -24,7 +24,9 @@ const [news, setNews] = React.useState();
 <NavigationBar/>
 <div className='p-4 container'>
 <div className='text-secondary fs-1 mt-5 mb-2'>Top Healthcare News Headlines</div>
-{!news ? <div className='text-center fs-3 mt-5 pt-5 text-secondary' >No News Found</div> : <div className='container' >{news.articles.map(data => (
+{!news ? <div className='text-center fs-3 mt-5 pt-5 text-secondary' ><div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div></div> : <div className='container' >{news.articles.map(data => (
     <div className='container'>
     <div className='mt-4 mx-auto'>
     <div className="card mb-4" >

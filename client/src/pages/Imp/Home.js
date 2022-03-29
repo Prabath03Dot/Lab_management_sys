@@ -12,9 +12,10 @@ import svg2 from '../../images/trophy.png';
 import svg3 from '../../images/test-tube.png';
 import svg4 from '../../images/microscope (1).png';
 import '../../css/Home.css'
+import CountUp from 'react-countup';
 
 const Home = () => {
-
+  
     return (
 <div> 
     
@@ -102,7 +103,7 @@ const Home = () => {
                 <div className="card-title">
                     <img src={svg4} className="card-img-top w-50" alt="..."/>
                 </div>
-                <h1 className="card-title py-2 fw-bold ">4000+</h1>
+                <h1 className="card-title py-2 fw-bold "> <CountUp  delay={2} suffix="+" end={4000} /></h1>
                 <p className="card-text">Customers</p>
             </div>
         </div>
@@ -111,7 +112,7 @@ const Home = () => {
             <div className="card-title">
             <img src={svg1} className="card-img-top w-50" alt="..."/>
             </div>
-            <h1 className="card-title py-2 fw-bold">1000+</h1>
+            <h1 className="card-title py-2 fw-bold"><CountUp  delay={2} suffix="+" end={1000} /></h1>
             <p className="card-text">Lab Tests</p>
             </div>
         </div>
@@ -120,7 +121,7 @@ const Home = () => {
             <div className="card-title">
             <img src={svg3} className="card-img-top w-50" alt="..."/>
             </div>
-            <h1 className="card-title py-2 fw-bold">50+</h1>
+            <h1 className="card-title py-2 fw-bold"><CountUp  delay={2} suffix="+" end={50} /></h1>
             <p className="card-text">Members</p>
             </div>
         </div>

@@ -15,7 +15,7 @@ const Footerr = () => {
                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Daniyester Mawatha,</a></li>
                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Kohuwala</a></li>
                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Tel: +94-112 789 589</a></li>
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Email: meditech.cn@gmail.com</a></li>
+                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Email: meditech@gmail.com</a></li>
                     </ul>
                 </div>
 

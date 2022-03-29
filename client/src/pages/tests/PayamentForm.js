@@ -229,7 +229,7 @@ export default function PayamentForm() {
                 </div>
 
           <div className="FormRow mb-3 mt-3">
-          <label for="inputPassword4" className="col-sm-2 col-form-label text-end">Card Details</label>
+          <label for="inputPassword4" className="col-sm-2 col-form-label">Card Details</label>
 
                     <CardElement id="card-element" options={cardStyle}/>
                 </div>
@@ -245,12 +245,12 @@ export default function PayamentForm() {
             <div className="spinner" id="spinner"></div> Processing...</div>
           ): (<div><i class="bi bi-lock"></i> Pay</div> ) }</button>
           }
-
-          <div>4242 4242 4242 4242</div>
+{/* 
+          <div>4242 4242 4242 4242</div> */}
         </form>
         :
        <div className="container bg-success bg-gradient rounded mb-5 pb-3">
-           <h2 className='text-light text-center p-3'> <i class="bi bi-check"></i> Test order Succesfull</h2>
+           <h2 className='text-light text-center p-3'> <i class="bi bi-check"></i> Test Order Succesfull</h2>
            <div className='bg-light p-3 border-light rounded p-4'> 
            <h2 className='text-center p-3'> Invoice  </h2>
            <fieldset className="FormGroup p-2">
@@ -322,7 +322,7 @@ export default function PayamentForm() {
             </div>
        </div> 
         }
-       <div  > <Link to="/appmnt" className='text-dark my-5'><i class="bi bi-arrow-left"></i>  Back to appointments page </Link></div>
+       <div className="py-3 ps-5"> <Link to="/appmnt" className='text-dark'><i class="bi bi-arrow-left"></i>  Back to appointments page </Link></div>
 
     </div>
   )

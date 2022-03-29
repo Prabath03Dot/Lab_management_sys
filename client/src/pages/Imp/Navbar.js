@@ -17,8 +17,8 @@ const NavBar = () => {
     <div className="row border-primary">
         <div className="col-md-5">
             <div className="row">
-                <div className="col text-center"><i class="bi bi-telephone px-2"></i>0112222777</div>
-                <div className="col"><i class="bi bi-envelope px-1"></i>meditech.cn@gmail.com</div>
+            <div className="col text-start"><i class="bi bi-telephone ps-1"></i>0112222777</div>
+                <div className="col text-start"><i class="bi bi-envelope pe-1"></i>meditech@gmail.com</div>
             </div>
         </div>
         <div className="col-md-4 ms-auto text-sm-end px-5 text-center">

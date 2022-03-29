@@ -68,11 +68,11 @@ To that end, we are empowering healthcare organizations large and small with bet
 Whether your priority is giving physicians time back in their day, providing patients a safe, comfortable experience, or improving your reimbursement potential - with MediTech, you will see the possibilities of better care transform into tangible results.
     </p> 
     </div> 
+    <div className='fs-1  mt-5 py-2 text-secondary' >Contact With Us</div>
 
-    <div className='container mt-5 mx-3 bg-light rounded ' >
-        <div className='fs-1 text-center mt-5 py-2 fw-bold text-secondary' >Contact With Us</div>
+    <div className='container p-3 bg-light rounded ' >
         <div>
-            <form className='p-5' ref={form} onSubmit={sendEmail}>
+            <form className='mx-3' ref={form} onSubmit={sendEmail}>
 
                 <div className="mb-3">
                     <label for="exampleFormControlInput1" className="form-label">Name</label>
@@ -86,9 +86,7 @@ Whether your priority is giving physicians time back in their day, providing pat
                     <label for="exampleFormControlTextarea1" className="form-label">Message</label>
                     <textarea className="form-control"  name="message" id="exampleFormControlTextarea1" placeholder='Enter the message here' rows="3"></textarea>
                 </div>
-                {/* {!loading ? !sending ? <button className='btn btn-primary w-100' >Send</button> :  <button className='btn btn-primary w-100' >Sending...</button> : 
-                !sending ? <button className='btn btn-primary w-100' >Send</button> :  <button className='btn btn-primary w-100' disabled>Sending...</button> } */}
-                {/* {!sending ? :  <button className='btn btn-primary w-100' >Sending...</button> }  */}
+
                 <button className='btn btn-primary w-100' >Send</button>
             </form>
         </div>

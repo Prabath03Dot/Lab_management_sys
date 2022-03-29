@@ -3,6 +3,8 @@ import {CardElement,useStripe,useElements} from "@stripe/react-stripe-js";
 import axios from "axios";
 import './BookTest.css';
 import Userfront from "@userfront/react";
+import { Link } from "react-router-dom";
+
 
 const cardStyle = {
   style: {
@@ -240,6 +242,7 @@ export default function PayamentForm() {
             </div>
        </div> 
         }
+        <div className="py-3 ps-5"> <Link to="/bulk" className='text-dark'><i class="bi bi-arrow-left"></i>  Back to Subscription page </Link></div>
 
     </div>
   )

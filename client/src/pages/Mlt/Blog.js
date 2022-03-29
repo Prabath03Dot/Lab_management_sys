@@ -34,7 +34,7 @@ export default function Blog() {
         })
         
       }, [])
-      if (!content) return null;
+      // if (!content) return null;
 
   return (
 <div>
@@ -51,7 +51,9 @@ export default function Blog() {
 <div className="align-items-center justify-items-center ">
 <div >
   <div className="card-body ">
-   {content.map(cList => {
+   { !content ? <div className='text-center fs-3 mt-5 pt-5 text-secondary' ><div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div></div> : content.map(cList => {
        return(
            <div className="mb-3  bg-gradient p-5 rounded shadow bg-body  border-start  border-primary border-4" key={cList._id}>
            <h5 className="card-title fs-1 text-secondary mb-4 fst-italic">{cList.blogTitle}</h5>
