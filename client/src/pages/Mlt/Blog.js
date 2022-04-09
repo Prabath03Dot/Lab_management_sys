@@ -45,11 +45,11 @@ export default function Blog() {
 {/* Blog Section */}
 
 <div className="p-4 container mt-5 mb-4">
-<div className='fs-1  text-secondary'>Blog Section</div>
+<div className='fs-1 text-secondary'>Blog Section</div>
 
 <div className="card mb-3  border-0 my-5" >
 <div className="align-items-center justify-items-center ">
-<div >
+<div>
   <div className="card-body ">
    { !content ? <div className='text-center fs-3 mt-5 pt-5 text-secondary' ><div class="spinner-border" role="status">
   <span class="visually-hidden">Loading...</span>

@@ -245,8 +245,7 @@ export default function PayamentForm() {
             <div className="spinner" id="spinner"></div> Processing...</div>
           ): (<div><i class="bi bi-lock"></i> Pay</div> ) }</button>
           }
-{/* 
-          <div>4242 4242 4242 4242</div> */}
+{/* <div>4242 4242 4242 4242</div> */}
         </form>
         :
        <div className="container bg-success bg-gradient rounded mb-5 pb-3">

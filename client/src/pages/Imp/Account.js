@@ -4,7 +4,7 @@ import '../../css/dashboard.css';
 import img1 from '../../images/flask.png'
 import Userfront from "@userfront/react";
 
-export default function Dashboard() {
+export default function Account() {
     Userfront.init("6bgm6jgb");
     const userFrontuser = Userfront.user;
     const navigate = useNavigate();
@@ -54,14 +54,13 @@ export default function Dashboard() {
         </ul>
       </div>
     </nav>
-    {/* onChange={e => setName(e.target.value)}  */}
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
     <div className='container mx-auto rounded mt-3' >
-        {/* <div className='fs-1 text-center py-2 fw-bold' >User Profile</div> */}
         <div>
-            <form className='p-5'>
-            <img src={userFrontuser.image} className="rounded mx-auto d-block mb-5" style={{width:'70px'}} alt={img1} ></img>
+            <form className='px-5 py-3'>
+            <img src={userFrontuser.image} className="rounded mx-auto d-block mb-4" style={{width:'70px'}} alt={img1} ></img>
+   
                 <div class="mb-3">
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" className="form-label">UserID</label>
@@ -87,12 +86,9 @@ export default function Dashboard() {
                     <label for="exampleFormControlInput2" className="form-label">Email address</label>
                     <input type="email" name="user_email" disabled value= {userFrontuser.email} className="form-control" id="exampleFormControlInput2" placeholder="name@example.com"/>
                 </div>
-                {/* <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" className="form-label">Message</label>
-                    <textarea className="form-control"  name="message" id="exampleFormControlTextarea1" placeholder='Enter the message here' rows="3"></textarea>
-                </div> */}
-                {/* <input type="submit" value="Submit" className='btn btn-primary' />          */}
             </form>
+            <div className='px-5 mt-0'>
+            <button className='btn btn-primary btn-sm'> <Link className='text-decoration-none text-light' to="/updateProfile">Update Profile</Link> </button></div>
         </div>
     </div>
 

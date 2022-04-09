@@ -18,12 +18,6 @@ export default function NavigationBar() {
     const navigate = useNavigate();
     //console.log(Userfront.user)
     const userFrontuser = Userfront.user;
-    // console.log(Userfront.tokens.accessToken);
-    // if(userFrontuser.email === 'admin@example.com' || Userfront.user.hasRole("admin")){
-    //     console.log('fsfs');
-    //     navigate('/appmnt')
-    //     //Userfront.redirectIfLoggedIn('http://localhost:3000/appmnt');
-    // }
   return (
     <div>
 
@@ -32,7 +26,7 @@ export default function NavigationBar() {
     <div className="row border-primary">
         <div className="col-md-5">
             <div className="row">
-                <div className="col text-start"><i class="bi bi-telephone ps-1"></i>0112222777</div>
+                <div className="col text-start"><i class="bi bi-telephone ps-3"></i>0112222778</div>
                 <div className="col text-start"><i class="bi bi-envelope pe-1"></i>meditech@gmail.com</div>
             </div>
         </div>
@@ -61,10 +55,10 @@ export default function NavigationBar() {
                  <div className='text-center pt-1'>
 
                     <div className="dropdown">
-                    <div className="dropdown-toggle nav-link text-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        {userFrontuser.email}
+                    <div className="dropdown-toggle nav-link text-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                        {userFrontuser.name}
                     </div>
-                    <ul className="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1">
+                    <ul className="dropdown-menu p-2 dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownMenuButton1">
                         <li><Link className="dropdown-item drp" to="/account">Account</Link></li>
                         <li><Link className="dropdown-item drp" to="/reports">Reports</Link></li>
                         

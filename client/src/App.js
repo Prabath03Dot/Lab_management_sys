@@ -1,40 +1,35 @@
 import './App.css';
-import { BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from './pages/Imp/Home';
-import Login from './pages/signUpIn/Login';
-import Admin from './pages/signUpIn/Admin';
 import Error from './pages/Imp/Error';
-import SignUp from './pages/signUpIn/SignUp';
 import { UserAuthContextProvider } from './Context/userAuthContext';
 import MainHome from './pages/Imp/Mainhome';
-import ProtectedRoutes from './pages/ProtectedRoutes'
 import FindTest from './pages/tests/FindTest';
 import Appmnt from './pages/tests/Appmnt';
 import BookTest from './pages/tests/BookTest';
 import "@stripe/stripe-js";
 import BulkTest from './pages/tests/BulkTest';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import UserReset from './pages/signUpIn/UserReset';
 import BulkTestForm from './pages/tests/BulkTestForm';
 import Blog from './pages/Mlt/Blog';
 import BlogEdit from './pages/Mlt/BlogEdit';
 import BlogDetails from './pages/Mlt/BlogDetails';
 import Edit from './pages/Mlt/Edit';
-import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
-import { ProtectedRoute } from './pages/Imp/PrivateRoutes';
-import { LoginForm, LogoutButton, SignupForm } from './pages/signUpIn/useFront';
+import { useAuth0 } from '@auth0/auth0-react';
+import { LoginForm, SignupForm } from './pages/signUpIn/useFront';
 import { RequireAuth } from './pages/signUpIn/userFrontProtected';
-//import Loading from './pages/Imp/Loading';
-// import SignupForm, LoginForm , PasswordResetForm from "../signUpIn/useFront";
 import Userfront from "@userfront/react";
 import About from './pages/Imp/About'
-import Profile from './pages/Imp/Profile';
 import Dashboard from './pages/Imp/Dashboard';
 import Account from './pages/Imp/Account';
 import Reports from './pages/Imp/Reports';
 import News from './pages/Imp/News';
 import Events from './pages/Imp/Events';
 import Pvc from './pages/Imp/pvc';
+import AccountUpdate from './pages/Imp/AccountUpdate';
+import CreateJob from './pages/careers/CreateJob';
+import JobRemove from './pages/careers/JobRemove';
+import SingleJob from './pages/careers/SingleJob';
+import EditJob from './pages/careers/EditJob';
 
 function App() {
   const { isLoading } = useAuth0();
@@ -45,20 +40,12 @@ function App() {
 
     const roleAdmin = Userfront.user.hasRole("admin");
     const roleMlt = Userfront.user.hasRole("member");
-  // if(){
-  //   console.log('ddddd');
-  // }
-  
+
   return (
       <Router>
         <UserAuthContextProvider>
         <Routes> 
           <Route path="/" element={<Home />}></Route>
-
-          {/* <Route path="/login" element={<Login />}></Route>
-          <Route path="/admin" element={<Admin />}></Route>
-          <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/userReset" element={<UserReset />}></Route> */}
 
           {/* Login/signUp */}
           <Route path="/useLogin" element={<LoginForm />}></Route>
@@ -71,6 +58,10 @@ function App() {
 
           <Route path="/account" element={
             <RequireAuth> <Account></Account> </RequireAuth>
+          } ></Route>
+
+          <Route path="/updateProfile" element={
+            <RequireAuth> <AccountUpdate></AccountUpdate> </RequireAuth>
           } ></Route>
 
           {(!roleAdmin && !roleMlt) && <Route path="/reports" element={
@@ -128,7 +119,28 @@ function App() {
           {/* News & Events */}
           <Route path="/news" element={<News></News>}></Route>
           <Route path="/careers" element={<Events></Events>}></Route>
+          {roleAdmin && <Route path="/createjobs" element={
+            <RequireAuth>
+              <CreateJob></CreateJob>
+            </RequireAuth>
+          }></Route> } 
+          {roleAdmin && <Route path="/removejob" element={
+            <RequireAuth>
+              <JobRemove></JobRemove>
+            </RequireAuth>
+          }></Route> } 
 
+          <Route path="/Job/:id" element={
+           
+              <SingleJob></SingleJob>
+
+          }></Route>
+
+{roleAdmin && <Route path="/Job/:id/edit" element={
+            <RequireAuth>
+              <EditJob></EditJob>
+            </RequireAuth>
+          }></Route> } 
 
           <Route path="/pvc" element={<Pvc></Pvc>}></Route>
 

@@ -12,9 +12,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import NavigationBar from '../Imp/NavigationBar';
 
 export default function Edit() {
-    const auth = getAuth();
     const editorRef = useRef(null);
-    const {user, logOut } = useUserAuth();
     
     const { id } = useParams();
     const [newBlogTitle, setNewBlogTitle] = useState('');
@@ -22,23 +20,6 @@ export default function Edit() {
     const [newBlogContent, setNewBlogContent] = useState('');
     const navigate = useNavigate();
     const [content, setContent] = useState();
-    const handleLogout =  async () => {
-        try{
-            await logOut();
-            // navigate('/');
-            
-        }catch(err){
-            console.log(err.message)
-        }
-    }
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          //console.log("user signed In");
-        } else {
-            //console.log("user signed Out");
-        }
-      });
 
     useEffect(() => {
         axios.get("http://localhost:5000/blogList")
@@ -99,7 +80,7 @@ export default function Edit() {
 <div className="container">
     <div className='fw-bold text-center mt-3 fs-1'>Edit Content</div>
     <form onSubmit={log}>
-    {content.filter(cnt => cnt._id == id )
+    {content.filter(cnt => cnt._id === id )
     .map(cDetails => (
         <div key={cDetails._id}>
             <div className='container'> 
