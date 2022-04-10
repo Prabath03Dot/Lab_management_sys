@@ -1,9 +1,64 @@
 import { Link, useNavigate } from "react-router-dom";
 import img from '../../images/Untitled(4).jpg'
+import Talk from 'talkjs';
+import { useEffect } from "react";
 
+// sendbird-uikit
 const Footerr = () => {
+//     useEffect(() => {
+//         const currentUser = this.props.currentUser;
+//         Talk.ready.then(() => {
+//           var me = new Talk.User({
+//             id: currentUser.id,
+//             name: currentUser.name,
+//             email: currentUser.email,
+//             photoUrl: currentUser.photo,
+//             welcomeMessage: 'Hey there! How are you? :-)',
+//             role: 'default',
+//           });
+
+//           if (!window.talkSession) {
+//             window.talkSession = new Talk.Session({
+//                 appId: "tbcCZf3F",
+//                 me: me
+//             });
+//         }
+
+//         var other = new Talk.User({
+//             id: '654321',
+//             name: 'Sebastian',
+//             email: 'Sebastian@example.com',
+//             photoUrl: 'https://demo.talkjs.com/img/sebastian.jpg',
+//             welcomeMessage: 'Hey, how can I help?',
+//             role: 'default',
+//           });
+
+//           var conversation = window.talkSession.getOrCreateConversation(
+//             Talk.oneOnOneId(me, other)
+//           );
+
+//         conversation.setParticipant(me);
+//         conversation.setParticipant(other);
+
+//         const popup = session.createPopup();
+// popup.select(conversation);
+// popup.mount({ show: false });
+
+// const button = document.getElementById('btn-getInTouch');
+// button.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   popup.show();
+// });
+
+//         });
+//       }, []);
+
+
+   
+
     return ( 
         <div className=" mt-5 pt-5">
+
             <div className="container mt-5 border-top">
             <footer className="py-5">
                 <div className="row">

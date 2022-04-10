@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import '../../css/Navabr.css';
 import {LogoutButton} from "../signUpIn/useFront";
 import Userfront from "@userfront/react";
+import Chat from "./Chat";
 
 const NavBar = () => {
     const userFrontuser = Userfront.user;
@@ -109,7 +110,9 @@ const NavBar = () => {
         </div>
     </div>
     </nav>
-
+  <div>
+      {/* <Chat></Chat> */}
+  </div>
 </div>       
         );
 }
