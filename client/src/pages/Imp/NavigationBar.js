@@ -95,17 +95,6 @@ export default function NavigationBar() {
             </li>
 
             <li className="nav-item dropdown mx-2">
-            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Ask Experts
-            </a>
-            <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink1">
-                <li><a className="dropdown-item drp" href="#">Action</a></li>
-                <li><a className="dropdown-item drp" href="#">Another action</a></li>
-                <li><a className="dropdown-item drp" href="#">Something else here</a></li>
-            </ul>
-            </li>
-
-            <li className="nav-item dropdown mx-2">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Education
             </a>
@@ -114,16 +103,7 @@ export default function NavigationBar() {
                 <li><Link className="dropdown-item drp" to="/blogEdit">Create Blog</Link></li>
             </ul>
             </li>
-{/* 
-            <li className="nav-item dropdown mx-2">
-            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                News & Events
-            </a>
-            <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink3">
-                <li><Link className="dropdown-item drp" to="/news">News</Link></li>
-                <li><Link className="dropdown-item drp" href="/events">Events</Link></li>
-            </ul>
-            </li> */}
+
 
             <Link className="nav-link mx-2" to="/news" role="button">
                 News
@@ -132,16 +112,7 @@ export default function NavigationBar() {
                Careers
             </Link>
 
-            {/* <li className="nav-item dropdown mx-2">
-            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                About
-            </a>
-            <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink4">
-                <li><a className="dropdown-item drp" href="#">Action</a></li>
-                <li><a className="dropdown-item drp" href="#">Another action</a></li>
-                <li><a className="dropdown-item drp" href="#">Something else here</a></li>
-            </ul>
-            </li> */}
+
             <Link className="nav-link mx-2" to="/about" role="button">
                 About
             </Link>

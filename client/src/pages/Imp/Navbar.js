@@ -1,13 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container' 
 import '../../css/Navabr.css';
-import { SignupForm, LoginForm, PasswordResetForm ,LogoutButton} from "../signUpIn/useFront";
+import {LogoutButton} from "../signUpIn/useFront";
 import Userfront from "@userfront/react";
 
 const NavBar = () => {
     const userFrontuser = Userfront.user;
-    const navigate = useNavigate();
 
 
     return (
@@ -82,17 +81,6 @@ const NavBar = () => {
                 <li><Link className="dropdown-item drp " to="/findtest">Find Test</Link></li>
                 <li><Link className="dropdown-item drp" to="/appmnt">Make Appoitment</Link></li>
                 <li><Link className="dropdown-item drp" to="/bulk">Bulk Test</Link></li>
-            </ul>
-            </li>
-
-            <li className="nav-item dropdown mx-2">
-            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Ask Experts
-            </a>
-            <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink1">
-                <li><a className="dropdown-item drp" href="#">Action</a></li>
-                <li><a className="dropdown-item drp" href="#">Another action</a></li>
-                <li><a className="dropdown-item drp" href="#">Something else here</a></li>
             </ul>
             </li>
 
