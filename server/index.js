@@ -29,6 +29,11 @@ mongoose.connect('mongodb+srv://dbuser:Pass9@cluster0.pisst.mongodb.net/labdatab
  
 //----------------------------------------------------------------
 // Mongoose and routes
+
+app.get('/', (req,res)=> {
+    res.send("Backend Running | OK");
+});
+
 app.get('/appmntt', (req, res)=>{
     Test.find({}, (err, result)=>{
         if(err){
