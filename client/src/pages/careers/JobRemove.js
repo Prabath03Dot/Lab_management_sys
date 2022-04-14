@@ -10,7 +10,7 @@ export default function JobRemove() {
   const [joblist, setjoblist] = useState();
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/jobList")
+    Axios.get("https://lab-sys.herokuapp.com/jobList")
     .then((response) => {
         setjoblist(response.data)
         console.log(response.data)

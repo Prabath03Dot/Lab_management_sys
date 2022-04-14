@@ -55,7 +55,7 @@ export default function BlogEdit() {
         }
 
         try{
-            await axios.post('http://localhost:5000/createBlog',{
+            await axios.post('https://lab-sys.herokuapp.com/createBlog',{
                 blogTitle,
                 blogAuthor,
                 blogContent

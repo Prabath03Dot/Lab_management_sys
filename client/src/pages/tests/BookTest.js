@@ -20,7 +20,7 @@ const BookTest = () => {
 
     //Appoinment Post Request
     useEffect(() => {
-      Axios.get("http://localhost:5000/appmntt")
+      Axios.get("https://lab-sys.herokuapp.com/appmntt")
       .then((response) => {
           setTestList(response.data)
           //console.log(response.data[id-1].testName);

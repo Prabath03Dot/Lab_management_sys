@@ -14,7 +14,7 @@ export default function EditJob() {
     //console.log(id);
 
   useEffect(() => {
-        axios.get(`http://localhost:5000/${id}`)
+        axios.get(`https://lab-sys.herokuapp.com/${id}`)
         .then((response) => {
 
              console.log(response.data);
@@ -28,7 +28,7 @@ export default function EditJob() {
         e.preventDefault();
 
         try{
-               axios.post(`http://localhost:5000/editJob/${id}`,{
+               axios.post(`https://lab-sys.herokuapp.com/editJob/${id}`,{
                 jobTitle,
                 jobContent
             } )

@@ -8,6 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors());
 
+require("dotenv").config({ path: "./config.env" });
+
 const Test = require('./models/test_cat');
 const User = require('./models/user');
 const Company = require("./models/company");
@@ -17,7 +19,7 @@ const Job = require('./models/jobs');
 
 //----------------------------------------------------------------
 //connection
-mongoose.connect('mongodb+srv://dbuser:Pass9@cluster0.pisst.mongodb.net/labdatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true })
       .then(()=>{
           console.log("Monogo Running....")
       })
@@ -31,7 +33,7 @@ mongoose.connect('mongodb+srv://dbuser:Pass9@cluster0.pisst.mongodb.net/labdatab
 // Mongoose and routes
 
 app.get('/', (req,res)=> {
-    res.send("Backend Running | OK");
+    res.send("Backend Running | OKkkk");
 });
 
 app.get('/appmntt', (req, res)=>{
@@ -273,7 +275,7 @@ app.get('/gto', (req,res)=> {
 
 //-----------------------------------------------------------------------
 //stripe
-const stripe = require('stripe')('sk_test_51KStWED1JpqiLwVa3sArEo487HRaeNZaLw0Q2IkUApS1lPZC2RsXE4tzLYGMjWVJ7QK6QjDJ1hM1ynI1DLM3v8XX00z5UYpTLU');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST);
 
 app.post("/payment", cors(), async (req, res) => {
 	console.log(req.body);
@@ -329,6 +331,7 @@ app.post("/bulkpayment", cors(), async (req, res) => {
 
 //-----------------------------------------
 //app listen
-app.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
     console.log("Server runninggg....");
 })

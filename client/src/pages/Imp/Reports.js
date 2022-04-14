@@ -21,7 +21,7 @@ export default function Dashboard() {
 
   //User Object Post Request
   useEffect(() => {
-    Axios.get("http://localhost:5000/getUser")
+    Axios.get("https://lab-sys.herokuapp.com/getUser")
     .then((response) => {
         setUserDate(response.data)
         console.log(response.data);

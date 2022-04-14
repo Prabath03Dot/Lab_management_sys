@@ -14,7 +14,7 @@ export default function CreateJob() {
         e.preventDefault();
 
         try{
-             axios.post('http://localhost:5000/JobCreate',{
+             axios.post('https://lab-sys.herokuapp.com/JobCreate',{
                 jobTitle,
                 jobContent,
                

@@ -12,7 +12,7 @@ export default function Events() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/jobList")
+    Axios.get("https://lab-sys.herokuapp.com/jobList")
     .then((response) => {
         setjoblist(response.data)
         // console.log(response.data)
@@ -23,7 +23,7 @@ export default function Events() {
   
   const handleDelete = (id) => {
     alert("Are you shure want the delete?")
-    Axios.delete(`http://localhost:5000/deletejob/${id}`)
+    Axios.delete(`https://lab-sys.herokuapp.com/deletejob/${id}`)
     .then(res => {
         // console.log(res.data)
         navigate('/careers')

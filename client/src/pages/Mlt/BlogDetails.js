@@ -45,7 +45,7 @@ export default function BlogDetails() {
 
 
     useEffect(() => {
-        axios.get("http://localhost:5000/blogList")
+        axios.get("https://lab-sys.herokuapp.com/blogList")
         .then((response) => {
             setContent(response.data)
             //console.log(response.data)

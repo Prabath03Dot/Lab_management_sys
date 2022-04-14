@@ -55,7 +55,7 @@ export default function PayamentForm() {
     setProcessing(true);
     setLoading(true);
     try{
-      await axios.post('http://localhost:5000/createSubs',{
+      await axios.post('https://lab-sys.herokuapp.com/createSubs',{
         testlabName,
         subsPlan,
         address,
@@ -94,7 +94,7 @@ export default function PayamentForm() {
     if(!error){
         try{
             const {id} = paymentMethod
-            const response = await axios.post('http://localhost:5000/bulkpayment', {
+            const response = await axios.post('https://lab-sys.herokuapp.com/bulkpayment', {
                 amount:5000,
                 id
             } )

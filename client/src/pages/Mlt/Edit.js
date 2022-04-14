@@ -22,7 +22,7 @@ export default function Edit() {
     const [content, setContent] = useState();
 
     useEffect(() => {
-        axios.get("http://localhost:5000/blogList")
+        axios.get("https://lab-sys.herokuapp.com/blogList")
         .then((response) => {
             setContent(response.data)
             setNewBlogTitle(response.data.blogTitle)
@@ -35,7 +35,7 @@ export default function Edit() {
 
     const handleDelete = (id) => {
         alert("Are you shure want the delete?")
-        axios.delete(`http://localhost:5000/delete/${id}`)
+        axios.delete(`https://lab-sys.herokuapp.com/delete/${id}`)
         .then(res => {
             console.log(res.data)
             navigate('/blog')
@@ -51,7 +51,7 @@ export default function Edit() {
             setNewBlogContent(editorRef.current.getContent())
         }
         try{
-            await axios.put(`http://localhost:5000/updateblog/${id}`, {
+            await axios.put(`https://lab-sys.herokuapp.com/updateblog/${id}`, {
                 newBlogTitle,
                 newBlogAuthor,
                 newBlogContent

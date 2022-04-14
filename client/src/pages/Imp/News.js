@@ -3,7 +3,7 @@ import Footerr from './Footer'
 import NavigationBar from './NavigationBar'
 import img from '../../images/chemistry.jpg'
 import NavBar from './Navbar'
-import Axios  from 'axios'
+import axios  from 'axios'
 import { Link } from 'react-router-dom'
 
 
@@ -11,7 +11,7 @@ export default function News() {
 const [news, setNews] = React.useState();
       //User Object Post Request
   useEffect(() => {
-    Axios.get("https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=9ee3c44038ca4876b022a0ce1372512e")
+    axios.get("https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=9ee3c44038ca4876b022a0ce1372512e")
     .then((response) => {
         setNews(response.data);
         console.log(response.data);

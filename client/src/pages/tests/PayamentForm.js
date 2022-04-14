@@ -52,7 +52,7 @@ export default function PayamentForm() {
  
     //Appoinment Post Request
     useEffect(() => {
-      Axios.get("http://localhost:5000/appmntt")
+      Axios.get("https://lab-sys.herokuapp.com/appmntt")
       .then((response) => {
           setTestName(response.data[id-1].testName);
       })     
@@ -67,7 +67,7 @@ export default function PayamentForm() {
     
 
     try{
-      await axios.post('http://localhost:5000/createUser',{
+      await axios.post('https://lab-sys.herokuapp.com/createUser',{
         firstName,
         lastName,
         email,
@@ -108,7 +108,7 @@ export default function PayamentForm() {
     if(!error){
         try{
             const {id} = paymentMethod
-            const response = await axios.post('http://localhost:5000/payment', {
+            const response = await axios.post('https://lab-sys.herokuapp.com/payment', {
                 amount:1000,
                 id
             } )
