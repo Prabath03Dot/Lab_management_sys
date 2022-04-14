@@ -1,20 +1,19 @@
 import React,{useEffect} from 'react'
 import Footerr from './Footer'
 import NavigationBar from './NavigationBar'
-import img from '../../images/chemistry.jpg'
-import NavBar from './Navbar'
+// import '../../../.env'
 import axios  from 'axios'
-import { Link } from 'react-router-dom'
 
 
 export default function News() {
 const [news, setNews] = React.useState();
       //User Object Post Request
+      //console.log(process.env.REACT_APP_UNSPLASH_KEY)
   useEffect(() => {
-    axios.get("https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=9ee3c44038ca4876b022a0ce1372512e")
+    axios.get(process.env.REACT_APP_UNSPLASH_KEY)
     .then((response) => {
         setNews(response.data);
-        console.log(response.data);
+        //console.log(response.data);
     }
     )     
   },[])
@@ -23,6 +22,8 @@ const [news, setNews] = React.useState();
 <div>
 <NavigationBar/>
 <div className='p-4 container'>
+{/* {process.env.REACT_APP_UNSPLASH_KEY} */}
+
 <div className='text-secondary fs-1 mt-5 mb-2'>Top Healthcare News Headlines</div>
 {!news ? <div className='text-center fs-3 mt-5 pt-5 text-secondary' ><div class="spinner-border" role="status">
   <span class="visually-hidden">Loading...</span>
