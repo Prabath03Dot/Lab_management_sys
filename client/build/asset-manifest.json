@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1647045b.css",
-    "main.js": "/static/js/main.b77e05ab.js",
+    "main.js": "/static/js/main.6e03539c.js",
     "static/media/girl_lab1.jpg": "/static/media/girl_lab1.38e6f2dde5db2d49b8b8.jpg",
     "static/media/bill-oxford-tR0PPLuN6Pw-unsplash.jpg": "/static/media/bill-oxford-tR0PPLuN6Pw-unsplash.eec82e9b03cf4f3f9098.jpg",
     "static/media/bootstrap-themes.png": "/static/media/bootstrap-themes.79439e8758b5dea25ebd.png",
@@ -13,10 +13,10 @@
     "static/media/trophy.png": "/static/media/trophy.8ff801cd35202e63247c.png",
     "index.html": "/index.html",
     "main.1647045b.css.map": "/static/css/main.1647045b.css.map",
-    "main.b77e05ab.js.map": "/static/js/main.b77e05ab.js.map"
+    "main.6e03539c.js.map": "/static/js/main.6e03539c.js.map"
   },
   "entrypoints": [
     "static/css/main.1647045b.css",
-    "static/js/main.b77e05ab.js"
+    "static/js/main.6e03539c.js"
   ]
 }
