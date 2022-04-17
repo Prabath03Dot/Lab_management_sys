@@ -13,39 +13,17 @@ import React, { useRef } from 'react';
 import '../../../node_modules/react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import NavigationBar from "../Imp/NavigationBar";
+import Userfront from "@userfront/react";
 
 export default function BlogEdit() {
     const editorRef = useRef(null);
     const navigate = useNavigate();
-    const [isError, setError] = useState(null);
+    // const [isError, setError] = useState(null);
     const [blogTitle, setBlogTitle] = useState("Melanina");
     const [blogAuthor, setBlogAuthor] = useState("james B");
     const [blogContent, setBlogContent] = useState();
     const [value, setValue] = useState();
 
-
-    const auth = getAuth();
-    const {user, logOut } = useUserAuth();
-    
-    const handleLogout =  async () => {
-        try{
-            await logOut();
-            // navigate('/');
-            
-        }catch(err){
-            console.log(err.message)
-        }
-    }
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          console.log("user signed In");
-        } else {
-            console.log("user signed Out");
-        }
-      });
-
-    
     const log = async (e) => {
         e.preventDefault();
         if (editorRef.current) {
@@ -101,8 +79,8 @@ export default function BlogEdit() {
 <NavigationBar/>
 
 {/* Blog Edits */}
-<div className='container mt-3'>
-  <h2 className="text-center py-2">Create A Blog</h2>
+<div className='p-4 container mt-5 mb-4'>
+  <div className="py-2 fs-1 text-secondary">Create A Blog</div>
   <form onSubmit={log}>
     <input className="my-4 form-control" type="text" name="title" id="title" placeholder="Blog Title" value={blogTitle} onChange={e => setBlogTitle(e.target.value)}/>
     <input className="my-4 form-control" type="text" name="authorName" id="authorName" placeholder="Author Name"  value={blogAuthor} onChange={e => setBlogAuthor(e.target.value)}/>
@@ -140,7 +118,7 @@ export default function BlogEdit() {
             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
           }}
         />
-    <button type='submit' className="btn btn-primary mt-3" >Log editor content</button>   
+    <button type='submit' className="btn btn-primary btn-sm mt-3" >Log editor content</button>   
   </form>
 </div>
 {/* {blogContent} */}

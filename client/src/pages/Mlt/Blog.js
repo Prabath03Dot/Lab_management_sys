@@ -10,20 +10,12 @@ import React, {useEffect} from 'react';
 import axios from 'axios';
 import NavBar from '../Imp/Navbar'
 import NavigationBar from "../Imp/NavigationBar";
+import Userfront from "@userfront/react";
 
 export default function Blog() {
-    const auth = getAuth();
-    const {user, logOut } = useUserAuth();
+
     const [content, setContent] = useState(null);
-
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          console.log("user signed In");
-        } else {
-            console.log("user signed Out");
-        }
-      });
+    const roleMlt = Userfront.user.hasRole("member");
 
 
     useEffect(() => {
@@ -34,7 +26,7 @@ export default function Blog() {
         })
         
       }, [])
-      // if (!content) return null;
+   
 
   return (
 <div>
@@ -46,7 +38,8 @@ export default function Blog() {
 
 <div className="p-4 container mt-5 mb-4">
 <div className='fs-1 text-secondary'>Blog Section</div>
-
+{roleMlt &&
+<div className="mt-3  text-secondary fst-italic"> <Link className="mt-3  text-secondary fst-italic" to="/blogEdit">Create Blog</Link><i class="bi bi-link-45deg"></i> </div> }
 <div className="card mb-3  border-0 my-5" >
 <div className="align-items-center justify-items-center ">
 <div>

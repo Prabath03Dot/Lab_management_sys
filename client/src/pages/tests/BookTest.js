@@ -38,7 +38,7 @@ const BookTest = () => {
 
         
         <div className="container p-4">
-        <div className="text-secondary fs-1 mt-5 mb-2">Book Test Appoinmnet | Checkout Section </div>
+        <div className="text-secondary fs-1 mt-5 mb-2 text-center text-md-start">Book Test Appoinmnet | Checkout Section </div>
 
         {    
             testList.filter(tests => tests.test_id === id )

@@ -70,7 +70,8 @@ export default function CreateJob() {
                   <textarea name="textarea"  className="form-control" required onChange={e => setjobContent(e.target.value)} id="inputUserId3" cols="30" rows="10"></textarea>
                   </div>
                 </div>
-                <div  className="row mb-3"><button type='submit' className='btn btn-primary mt-5'><Link className='text-decoration-none text-light' to='/editjobs'>Post Job</Link></button></div>
+                <div  className="row mb-3"><button type='submit' className='btn btn-primary mt-5'>
+                Post Job</button></div>
             </fieldset>
         </form>
     </div>

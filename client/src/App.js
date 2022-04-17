@@ -43,7 +43,7 @@ function App() {
 
   return (
       <Router>
-        <UserAuthContextProvider>
+
         <Routes> 
           <Route path="/" element={<Home />}></Route>
 
@@ -53,7 +53,7 @@ function App() {
 
 
           <Route path="/home" element={
-            <RequireAuth> <MainHome></MainHome> </RequireAuth>
+            <MainHome></MainHome> 
           } ></Route>
 
           <Route path="/account" element={
@@ -124,11 +124,11 @@ function App() {
               <CreateJob></CreateJob>
             </RequireAuth>
           }></Route> } 
-          {roleAdmin && <Route path="/removejob" element={
+          {/* {roleAdmin && <Route path="/removejob" element={
             <RequireAuth>
               <JobRemove></JobRemove>
             </RequireAuth>
-          }></Route> } 
+          }></Route> }  */}
 
           <Route path="/Job/:id" element={
            
@@ -149,7 +149,7 @@ function App() {
      
         </Routes>
 
-        </UserAuthContextProvider>
+ 
 
 
       </Router>

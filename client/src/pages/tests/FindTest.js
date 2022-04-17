@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import Footerr from "../Imp/Footer";
 import NavBar from "../Imp/Navbar";
 import NavigationBar from "../Imp/NavigationBar";
+
 
 const FindTest = () => {
     return (
@@ -8,16 +10,20 @@ const FindTest = () => {
             <NavigationBar/>
 
             {/* Components  */}
-            <div className="container  mt-5 pt-4 pb-5">
-                <ul class="nav nav-tabs position-absolute start-50 translate-middle" id="myTab" role="tablist">
+            <div className="p-4 container mt-5 mb-4">
+            <div className='text-secondary fs-1'>Tests</div>
+
+            <div className="pb-4"> <Link className="text-decoration-none text-secondary " to='/appmnt'>Purchase Tests <i class="bi bi-link-45deg"></i></Link></div>
+            <center>
+                <ul className="nav nav-tabs align-items-center justify-content-center" id="myTab" role="tablist">
                     <li className="nav-item" role="presentation">
-                    <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Common Test</button>
+                    <button className="nav-link active " id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Common Test</button>
                     </li>
                     <li className="nav-item" role="presentation">
-                    <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">All Tests</button>
+                    <button className="nav-link " id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">All Tests</button>
                     </li>
                 </ul>
-
+            </center>
                 <div className="tab-content" id="myTabContent">
 
                 {/* Common Tests */}

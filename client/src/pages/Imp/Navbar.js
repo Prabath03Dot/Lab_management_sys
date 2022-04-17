@@ -4,10 +4,11 @@ import Container from 'react-bootstrap/Container'
 import '../../css/Navabr.css';
 import {LogoutButton} from "../signUpIn/useFront";
 import Userfront from "@userfront/react";
-import Chat from "./Chat";
 
 const NavBar = () => {
     const userFrontuser = Userfront.user;
+    const roleMlt = Userfront.user.hasRole("member");
+    const roleAdmin = Userfront.user.hasRole("admin");
 
 
     return (
@@ -51,7 +52,7 @@ const NavBar = () => {
                     </div>
                     <ul className="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1">
                         <li><Link className="dropdown-item drp" to="/account">Account</Link></li>
-                        <li><Link className="dropdown-item drp" to="/reports">Reports</Link></li>
+                        {roleAdmin ? <div></div> : <li><Link className="dropdown-item drp" to="/reports">Reports</Link></li>}
                         
                     </ul>
                     </div>
@@ -91,7 +92,7 @@ const NavBar = () => {
             </Link>
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink2">
                 <li><Link className="dropdown-item drp" to="/blog">Blogs</Link></li>
-                <li><Link className="dropdown-item drp" to="/blogEdit">Create Blog</Link></li>
+                 {!roleMlt ? <div></div> : <li><Link className="dropdown-item drp" to="/blogEdit">Create Blog</Link></li>} 
             </ul>
             </li>
 

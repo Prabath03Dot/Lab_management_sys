@@ -14,7 +14,8 @@ export default function BulkTest() {
 
             {/* Bulk Test Component */}
             <div className='container mt-5 p-4'>
-            <div className='text-secondary fs-1 mb-4'>Choose Your Subscription Plan</div>
+            <div className='text-secondary fs-1 mb-2'>Choose Your Subscription Plan</div>
+            <div className='text-secondary mb-4'>For labs only</div>
 
             <div className="card-group">
             <div className="card">

@@ -1,4 +1,4 @@
-import Axios  from 'axios';
+import axios  from 'axios';
 import React,{useEffect,useState,useRef } from 'react'
 import { Link,useParams ,useNavigate} from 'react-router-dom';
 import '../../css/dashboard.css';
@@ -7,6 +7,8 @@ import { useReactToPrint } from 'react-to-print';
 // import { ComponentToPrint } from './ComponentToPrint';
 
 export default function Dashboard() {
+  const roleMlt = Userfront.user.hasRole("member");
+
   const componentRef = useRef();
   const { id } = useParams();
   const [userDate, setUserDate] = useState();
@@ -14,6 +16,7 @@ export default function Dashboard() {
   const userFrontuser = Userfront.user;
   const username = userFrontuser.username;
   const navigate = useNavigate();
+  const [process, setProcess] = useState();
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -21,10 +24,11 @@ export default function Dashboard() {
 
   //User Object Post Request
   useEffect(() => {
-    Axios.get("https://lab-sys.herokuapp.com/getUser")
+    axios.get("https://lab-sys.herokuapp.com/getUser")
     .then((response) => {
         setUserDate(response.data)
         console.log(response.data);
+        setProcess(true);
     }
     )     
   },[])
@@ -72,7 +76,8 @@ export default function Dashboard() {
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 <div className='container mt-4' >
-    {!userDate ?  <div className='text-center fs-3 mt-5 pt-5 text-secondary'  >No Reports Founded</div> : (userDate.filter(data => data.username === username)
+
+    {userDate ?  (userDate.filter(data => data.username === username)
     .map((datas) => (
       <div key={datas._id}>
       <div className="accordion"  id={`${datas.username}`}>
@@ -204,10 +209,7 @@ export default function Dashboard() {
                 <div className='text-secondary text-center mt-5'>MediTech Labs Digital Reference</div>
                 <div className='text-secondary text-center'>2022 | All rigths Reserved</div>
                 </div>
-                
-
-                </div>
-                
+                </div>            
               </div> <button className='btn btn-primary btn-sm mx-3 my-3' onClick={handlePrint}>Print this out!</button>
             </div>
            
@@ -216,7 +218,7 @@ export default function Dashboard() {
         </div>
 
       </div>
-    ) ) )}
+    ) ) ): <div className='text-center fs-3 mt-5 pt-5 text-secondary'><div>No Reports Founded</div></div> }
 </div>
 
     </main>

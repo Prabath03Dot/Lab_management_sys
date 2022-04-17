@@ -48,9 +48,9 @@ const BulkTestForm = () => {
 
 
         <div className="container p-4 ">
-        <div className=" text-secondary fs-1 mt-5 mb-2">Subscribtion Plan | Checkout Section</div>
+        <div className=" text-secondary fs-1 mt-5 mb-2 text-center text-md-start">Subscribtion Plan | Checkout Section</div>
         </div>
-        <div className="container p-5 ">
+        <div className="container ">
           <Elements stripe={stripeTestPromise} >
             <BulkPayamentForm/>
           </Elements>

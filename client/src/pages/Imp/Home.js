@@ -13,6 +13,7 @@ import svg3 from '../../images/test-tube.png';
 import svg4 from '../../images/microscope (1).png';
 import '../../css/Home.css'
 import CountUp from 'react-countup';
+import NavigationBar from './NavigationBar';
 
 const Home = () => {
   
@@ -20,7 +21,7 @@ const Home = () => {
 <div> 
     
     {/* Navigatio Bar */}
-    <NavBar></NavBar>
+    <NavigationBar/>
 
     {/* 2nd NavBar */}
     <div className="container col-xxl-8 px-4 py-5">

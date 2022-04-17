@@ -31,7 +31,7 @@ export default function Events() {
 {!joblist? <div>Loading...</div> : joblist.map(job => {
     return(
       <div className=' px-2 py-2 mt-1 rounded' key={job._id}>
-      <h4> <Link to={`/Job/${job._id}`}>{job.jobTitle}</Link> </h4>
+      <h4> <Link className='text-wrap' to={`/Job/${job._id}`}>{job.jobTitle}</Link> </h4>
       
 
 </div>
@@ -39,7 +39,7 @@ export default function Events() {
   } )
 }
   <div>
-      {roleAdmin ? <button className='btn btn-sm btn-primary mt-5 rounded-end'><Link className='text-decoration-none text-light' to='/createjobs'>Create Job</Link></button>: <button disabled className='btn btn-sm btn-primary mt-5 rounded-end'><Link className='text-decoration-none text-light' to='/createjobs'>Create Job</Link></button>}
+      {roleAdmin && <button className='btn btn-sm btn-primary mt-5 rounded-end'><Link className='text-decoration-none text-light' to='/createjobs'>Create Job</Link></button>}
       
   </div>
 </div>

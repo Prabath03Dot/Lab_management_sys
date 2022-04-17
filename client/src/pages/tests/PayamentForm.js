@@ -58,7 +58,13 @@ export default function PayamentForm() {
       })     
     },[])
 
-    const [startDate, setStartDate] = useState();
+    const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(), 0), 8));
+    const filterPassedTime = (time) => {
+      const currentDate = new Date();
+      const selectedDate = new Date(time);
+  
+      return currentDate.getTime() < selectedDate.getTime();
+    };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -138,54 +144,54 @@ export default function PayamentForm() {
         <form  className="mx-auto justify-items-center align-items-center"  onSubmit={handleSubmit} id="payment-form">
             <fieldset className="FormGroup">
             <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">Email Address</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label">Email Address</label>
                   <div className="col-sm-10">
                     <input type="email" value={email} disabled className="form-control" id="inputEmail3" />
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">User Name</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label">User Name</label>
                   <div className="col-sm-10">
                     <input type="email" value={username} disabled className="form-control" id="inputUserId3" />
                   </div>
                 </div>
               <div className="row mb-3">
-                  <label for="inputEmail1" className="col-sm-2 col-form-label text-end">First Name</label>
+                  <label for="inputEmail1" className="col-sm-2 col-form-label">First Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} className="form-control" id="inputEmail1" required/>
                   </div>
                 </div> 
                 <div className="row mb-3">
-                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Last Name</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label">Last Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} className="form-control" id="inputEmail2" required/>
                   </div>
                 </div>
               <div className="row mb-3">
-                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Gender</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label">Gender</label>
                   <div className="col-sm-10">
                   <select required className="form-select" aria-label="Default select example" 
                   onChange={e => setGender(e.target.value)}>
-                    {/* <option >Select Gender</option> */}
-                    <option selected value="Male">Male</option>
+                    <option selected >Select Gender</option>
+                    <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select></div>
                 </div>
                 {/* <div>vvd {gender}</div> */}
                 <div className="row mb-3">
-                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Age</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label">Age</label>
                   <div className="col-sm-10">
                     <input type="number" value={age} onChange={e => setAge(e.target.value)} className="form-control" id="inputEmail2" required/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Phone Number</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label">Phone Number</label>
                   <div className="col-sm-10">
                     <input type="text" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} className="form-control" id="inputPassword3" required/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Time Slot</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label">Time Slot</label>
                   <div className="col-sm-10">
                     <DatePicker
                       selected={startDate}
@@ -194,32 +200,34 @@ export default function PayamentForm() {
                       minDate={new Date()}
                       excludeOutOfBoundsTimes
                       timeFormat="HH:mm"
-                      timeIntervals={60}
+                      timeIntervals={120}
                       timeCaption="time"
-                      excludeTimes={[
-                        setHours(setMinutes(new Date(), 0), 17),
-                        setHours(setMinutes(new Date(), 0), 18),
-                        setHours(setMinutes(new Date(), 0), 19),
-                        setHours(setMinutes(new Date(), 0), 20),
-                        setHours(setMinutes(new Date(), 0), 21),
-                        setHours(setMinutes(new Date(), 0), 22),
-                        setHours(setMinutes(new Date(), 0), 23),
-                        setHours(setMinutes(new Date(), 0), 24),
-                        setHours(setMinutes(new Date(), 0), 0),
-                        setHours(setMinutes(new Date(), 0), 1),
-                        setHours(setMinutes(new Date(), 0), 2),
-                        setHours(setMinutes(new Date(), 0), 3),
-                        setHours(setMinutes(new Date(), 0), 4),
-                        setHours(setMinutes(new Date(), 0), 5),
-                        //setHours(new Date(), getHours(new Date())),
-                        //setHours(new Date(), 9),
-                        setHours(setMinutes(new Date(), 0), 6),
-                        //setHours(setMinutes(new Date(), 0), 7),
-                        //setHours(setMinutes(new Date(), 0), getHours(new Date()))
-                      ]}
-                      minTime={setHours(setMinutes(new Date(), 0), getHours(new Date()) + 1) }
+                      minTime={setHours(setMinutes(new Date(), 0),8) }
+                      maxTime={setHours(setMinutes(new Date(), 0), 18) }
+
+                      // excludeTimes={[
+                      //   setHours(setMinutes(new Date(), 0), 17),
+                      //   setHours(setMinutes(new Date(), 0), 18),
+                      //   setHours(setMinutes(new Date(), 0), 19),
+                      //   setHours(setMinutes(new Date(), 0), 20),
+                      //   setHours(setMinutes(new Date(), 0), 21),
+                      //   setHours(setMinutes(new Date(), 0), 22),
+                      //   setHours(setMinutes(new Date(), 0), 23),
+                      //   setHours(setMinutes(new Date(), 0), 24),
+                      //   setHours(setMinutes(new Date(), 0), 0),
+                      //   setHours(setMinutes(new Date(), 0), 1),
+                      //   setHours(setMinutes(new Date(), 0), 2),
+                      //   setHours(setMinutes(new Date(), 0), 3),
+                      //   setHours(setMinutes(new Date(), 0), 4),
+                      //   setHours(setMinutes(new Date(), 0), 5),
+                      //   //setHours(new Date(), getHours(new Date())),
+                      //   //setHours(new Date(), 9),
+                      //   setHours(setMinutes(new Date(), 0), 6),
+                      //   //setHours(setMinutes(new Date(), 0), 7),
+                      //   //setHours(setMinutes(new Date(), 0), getHours(new Date()))
+                      // ]}
+                      filterTime={filterPassedTime}
                       //minTime={DateTime.local().hour}
-                      maxTime={setHours(setMinutes(new Date(), 0), 17) }
                       dateFormat="MMMM d, yyyy h:mm aa"
                       showDisabledMonthNavigation
                       required
@@ -254,65 +262,65 @@ export default function PayamentForm() {
            <h2 className='text-center p-3'> Invoice  </h2>
            <fieldset className="FormGroup p-2">
               <div className="row mb-3">
-              <label for="inputEmail1" className="col-sm-2 col-form-label text-end">Invoice Number</label>
+              <label for="inputEmail1" className="col-sm-2 col-form-label">Invoice Number</label>
               <div className="col-sm-10">
                 <input type="text" value={invoiceId} className="form-control" id="inputEmail1" disabled/>
               </div>
               <p className='text-center text-success'> Provide the invoice number when you visit the laboratory </p>
               </div> 
               <div className="row mb-3">
-                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Test Name</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label">Test Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={testName} className="form-control" id="inputEmail2" disabled/>
                   </div>
                 </div>
               <div className="row mb-3">
-              <label for="inputEmail1" className="col-sm-2 col-form-label text-end">User Name</label>
+              <label for="inputEmail1" className="col-sm-2 col-form-label">User Name</label>
               <div className="col-sm-10">
                 <input type="text" value={username} className="form-control" id="inputUserID1" disabled/>
               </div>
               </div> 
 
               <div className="row mb-3">
-                  <label for="inputEmail1" className="col-sm-2 col-form-label text-end">First Name</label>
+                  <label for="inputEmail1" className="col-sm-2 col-form-label">First Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={firstName} className="form-control" id="inputEmail1" disabled/>
                   </div>
                 </div> 
               <div className="row mb-3">
-                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Last Name</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label">Last Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={lastName} className="form-control" id="inputEmail2" disabled/>
                   </div>
                 </div>
 
                 <div className="row mb-3">
-                  <label for="inputEmail7" className="col-sm-2 col-form-label text-end">Gender</label>
+                  <label for="inputEmail7" className="col-sm-2 col-form-label">Gender</label>
                   <div className="col-sm-10">
                     <input type="text" value={gender} className="form-control" id="inputEmail7" disabled/>
                   </div>
                 </div>
 
                 <div className="row mb-3">
-                  <label for="inputEmail2" className="col-sm-2 col-form-label text-end">Age</label>
+                  <label for="inputEmail2" className="col-sm-2 col-form-label">Age</label>
                   <div className="col-sm-10">
                     <input type="text" value={age} className="form-control" id="inputEmail2" disabled/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">Email Address</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label">Email Address</label>
                   <div className="col-sm-10">
                     <input type="email" value={email} className="form-control" id="inputEmail3" disabled/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Phone Number</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label">Phone Number</label>
                   <div className="col-sm-10">
                     <input type="text" value={phoneNumber} className="form-control" id="inputPassword3" disabled/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Time Slot</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label">Time Slot</label>
                   <div className="col-sm-10">
                     <input type="text" value={startDate} className="form-control" id="inputPassword3" disabled/>
                   </div>

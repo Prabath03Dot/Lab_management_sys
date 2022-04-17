@@ -8,6 +8,8 @@ export default function Account() {
     Userfront.init("6bgm6jgb");
     const userFrontuser = Userfront.user;
     const navigate = useNavigate();
+    const roleMlt = Userfront.user.hasRole("member");
+    const roleAdmin = Userfront.user.hasRole("admin");
 
     const [name, setName] = useState(userFrontuser.name);
     Userfront.user.update({
@@ -46,10 +48,11 @@ export default function Account() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link fs-5" to="/reports">
+          {roleAdmin ? <div></div> :  <Link className="nav-link fs-5" to="/reports">
               <span data-feather="layers"></span>
               <i class="bi bi-file-earmark-text"></i> Reports
-            </Link>
+            </Link>}
+           
           </li>
         </ul>
       </div>

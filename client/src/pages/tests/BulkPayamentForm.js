@@ -124,44 +124,45 @@ export default function PayamentForm() {
         <form  className="mx-auto justify-items-center align-items-center"  onSubmit={handleSubmit} id="payment-form">
             <fieldset className="FormGroup">
             <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">User Name</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label ">User Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={userFrontuser.username} disabled className="form-control" id="inputUserId3" />
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">Email Address</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label ">Email Address</label>
                   <div className="col-sm-10">
                     <input type="email" value={email} className="form-control" id="inputEmail3" disabled/>
                   </div>
                 </div>
               <div className="row mb-3">
-                  <label for="inputEmail1" className="col-sm-2 col-form-label text-end">Lab Name</label>
+                  <label for="inputEmail1" className="col-sm-2 col-form-label ">Lab Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={testlabName} onChange={e => setTestlabName(e.target.value)} className="form-control" id="inputEmail1" required/>
                   </div>
                 </div> 
 
               <div className="row mb-3">
-                  <label for="inputEmail22" className="col-sm-2 col-form-label text-end">Subscription Plan</label>
+                  <label for="inputEmail22" className="col-sm-2 col-form-label ">Subscription Plan</label>
                   <div className="col-sm-10">
                   <select className="form-select " aria-label="Default select " 
                   onChange={e => setsubsPlan(e.target.value)} required>
-                    <option selected value="Basic-Plan">Basic Plan - LKR 30,000 </option>
+                    <option selected>Select Plan</option>
+                    <option value="Basic-Plan">Basic Plan - LKR 30,000 </option>
                     <option value="Standerd-Plan">Standerd Plan - LKR 80,000 </option>
                     <option value="Premium-Plan">Premium Plan - LKR 120,000 </option>
                   </select>
                   </div>
                 </div>
-{/* {subsPlan} */}
+
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Address</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label ">Address</label>
                   <div className="col-sm-10">
                     <input type="text" value={address} onChange={e => setAddress(e.target.value)} className="form-control" id="inputPassword3" required/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword4" className="col-sm-2 col-form-label text-end">Phone Number</label>
+                  <label for="inputPassword4" className="col-sm-2 col-form-label ">Phone Number</label>
                   <div className="col-sm-10">
                     <input type="text" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} className="form-control" id="inputPassword4" required/>
                   </div>
@@ -195,45 +196,45 @@ export default function PayamentForm() {
            <h2 className='text-center p-3'> Invoice  </h2>
            <fieldset className="FormGroup p-2">
                 <div className="row mb-3">
-                  <label for="inputEmail1" className="col-sm-2 col-form-label text-end">Invoice Number</label>
+                  <label for="inputEmail1" className="col-sm-2 col-form-label ">Invoice Number</label>
                   <div className="col-sm-10">
                     <input type="text" value={num} className="form-control" id="inputEmail1" disabled/>
                   </div>
                   <p className='text-center text-success' > Provide the invoice number when you visit the laboratory </p>
                 </div> 
                 <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">Email Address</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label ">Email Address</label>
                   <div className="col-sm-10">
                     <input type="email" value={email} className="form-control" id="inputEmail3" disabled/>
                   </div>
                 </div>                
                 <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">User Name</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label ">User Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={userFrontuser.username} className="form-control" id="inputEmail3" disabled/>
                   </div>
                 </div>
               <div className="row mb-3">
-                  <label for="inputEmail1" className="col-sm-2 col-form-label text-end">Lab Name</label>
+                  <label for="inputEmail1" className="col-sm-2 col-form-label ">Lab Name</label>
                   <div className="col-sm-10">
                     <input type="text" value={testlabName} className="form-control" id="inputEmail1" disabled/>
                   </div>
                 </div> 
               <div className="row mb-3">
-                  <label for="inputEmail22" className="col-sm-2 col-form-label text-end">Subscribtion Plan</label>
+                  <label for="inputEmail22" className="col-sm-2 col-form-label ">Subscribtion Plan</label>
                   <div className="col-sm-10">
                     <input type="text" value={subsPlan} className="form-control" id="inputEmail22" disabled/>
                   </div>
                 </div>
 
                 <div className="row mb-3">
-                  <label for="inputEmail3" className="col-sm-2 col-form-label text-end">Address</label>
+                  <label for="inputEmail3" className="col-sm-2 col-form-label ">Address</label>
                   <div className="col-sm-10">
                     <input type="email" value={address} className="form-control" id="inputEmail3" disabled/>
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label for="inputPassword3" className="col-sm-2 col-form-label text-end">Phone Number</label>
+                  <label for="inputPassword3" className="col-sm-2 col-form-label ">Phone Number</label>
                   <div className="col-sm-10">
                     <input type="text" value={phoneNumber} className="form-control" id="inputPassword3" disabled/>
                 </div>

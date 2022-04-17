@@ -4,11 +4,6 @@ import { useState, useEffect } from "react";
 import Axios  from 'axios';
 import Table from 'react-bootstrap/Table'
 import { Link, useParams, useNavigate} from "react-router-dom";
-import { useUserAuth } from "../../Context/userAuthContext";
-import { onAuthStateChanged,getAuth } from "firebase/auth";
-import Container from 'react-bootstrap/Container' 
-import { useAuth0 } from "@auth0/auth0-react";
-import { SignupForm, LoginForm, PasswordResetForm ,LogoutButton} from "../signUpIn/useFront";
 import Userfront from "@userfront/react";
 import NavigationBar from "../Imp/NavigationBar";
 
@@ -16,37 +11,9 @@ import NavigationBar from "../Imp/NavigationBar";
 const Appmnt = () => {
     const [testList, setTestList] = useState([]);
     const { id } = useParams();
-    //const [changeTest, setChangeTest] = useState();
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const {logIn} = useUserAuth();
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
-    const auth = getAuth();
-    const {user, logOut } = useUserAuth();
 
     Userfront.init("6bgm6jgb");
     const userFrontuser = Userfront.user;
-
-    const handleSubmit = async (e)=>{
-        //e.preventDefault();
-        setError("");
-        if(!user){
-            try{
-                await logIn(email, password);
-                navigate("/appmnt");
-            }
-            catch (err){
-                setError(err.message);
-            } 
-        }else{
-            //navigate(`/appmnt/${test.test_id}`);
-            navigate("/appmnt");
-        }
-        
-    }
-
 
     useEffect(() => {
       Axios.get("https://lab-sys.herokuapp.com/appmntt")
@@ -82,7 +49,7 @@ const Appmnt = () => {
                 <td className="text-center">{test.test_id} </td>
                 <td>{test.testName} </td>
                 <td className="text-center"><button value={test.test_id} className="btn btn-primary btn-sm px-3 text-light">
-                <Link className="text-light" to={`/appmnt/${test.test_id}`} onClick={handleSubmit}>Checkout</Link>
+                <Link className="text-light" to={`/appmnt/${test.test_id}`}>Checkout</Link>
                 </button></td>
             </tr>  
         )

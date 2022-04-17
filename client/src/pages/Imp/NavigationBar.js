@@ -15,9 +15,10 @@ import Container from 'react-bootstrap/Container'
 
 export default function NavigationBar() {
     Userfront.init("6bgm6jgb");
-    const navigate = useNavigate();
     //console.log(Userfront.user)
     const userFrontuser = Userfront.user;
+    const roleMlt = Userfront.user.hasRole("member");
+    const roleAdmin = Userfront.user.hasRole("admin");
   return (
     <div>
 
@@ -41,7 +42,7 @@ export default function NavigationBar() {
 
     <Navbar >
     <Container>
-    <div className="text-secondary fs-4 px-2"> <Link className='text-secondary text-decoration-none' to='/'>MediTech</Link> </div>
+    <div className="text-secondary fs-4 px-2"> <Link className='text-secondary text-decoration-none' to='/home'>MediTech</Link> </div>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
         <div className="d-flex justify-content-end">
@@ -60,7 +61,7 @@ export default function NavigationBar() {
                     </div>
                     <ul className="dropdown-menu p-2 dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownMenuButton1">
                         <li><Link className="dropdown-item drp" to="/account">Account</Link></li>
-                        <li><Link className="dropdown-item drp" to="/reports">Reports</Link></li>
+                        {roleAdmin ? <div></div> : <li><Link className="dropdown-item drp" to="/reports">Reports</Link></li>}
                         
                     </ul>
                     </div>
@@ -100,7 +101,7 @@ export default function NavigationBar() {
             </a>
             <ul className="dropdown-menu p-2" aria-labelledby="navbarDropdownMenuLink2">
                 <li><Link className="dropdown-item drp" to="/blog">Blogs</Link></li>
-                <li><Link className="dropdown-item drp" to="/blogEdit">Create Blog</Link></li>
+                {/* {!roleMlt ? <div></div> : <li><Link className="dropdown-item drp" to="/blogEdit">Create Blog</Link></li>}              */}
             </ul>
             </li>
 

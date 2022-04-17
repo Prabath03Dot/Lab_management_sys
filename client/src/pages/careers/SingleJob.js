@@ -22,7 +22,9 @@ export default function Events() {
 
   
   const handleDelete = (id) => {
-    alert("Are you shure want the delete?")
+    //alert("Are you shure want the delete?")
+    
+    if(window.confirm("Are you shure want the delete?") === true){
     Axios.delete(`https://lab-sys.herokuapp.com/deletejob/${id}`)
     .then(res => {
         // console.log(res.data)
@@ -30,6 +32,10 @@ export default function Events() {
     }).catch((error) => {
         console.log(error)
         })
+    }else{
+      navigate(`/careers`)
+    }
+
 }
 
   return (
@@ -50,11 +56,11 @@ export default function Events() {
 <div className='bg-light p-4 fw-lighter'> If you are interested please send in your detailed CV along with names and contact details to: Head of MediTech Labs (PVT) LTD. No 258,Daniyester Mawatha,Kohuwala. or  Email: careers@meditech.gmail.com; For More Inquiries Tel: +94-112 789 589 </div></div>
   <div>
        {roleAdmin ? <button onClick={() => handleDelete(id)}  className='btn btn-primary btn-sm mt-5  rounded-0 rounded-start'><Link className='text-decoration-none text-light' to='/removejob' >Close Job</Link></button> :
-       <button disabled className='btn btn-primary btn-sm mt-5  rounded-0 rounded-start'>Close Job</button>} 
+       <div></div>} 
     
-      {roleAdmin ? <button  className='btn btn-primary mt-5 btn-sm rounded-0 rounded-end'><Link className='text-decoration-none text-light' 
+       {roleAdmin ? <button  className='btn btn-primary mt-5 btn-sm rounded-0 rounded-end'><Link className='text-decoration-none text-light' 
       to={`/Job/${job._id}/edit`}>Edit</Link></button> :
-      <button disabled className='btn btn-primary  mt-5 btn-sm rounded-0 rounded-end'>Edit</button> }
+      <div></div> }
       
   </div>
 </div>
