@@ -33,7 +33,7 @@ const NavBar = () => {
 
     <Navbar >
     <Container >
-        <div className="text-secondary fs-4 px-2"> <Link className='text-secondary text-decoration-none' to='/'>MediTech</Link> </div>
+        <div className="text-secondary fs-4 px-2"> <Link className='text-secondary text-decoration-none' to='/home'>MediTech</Link> </div>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
         <div className="d-flex justify-content-end">
@@ -48,7 +48,7 @@ const NavBar = () => {
 
                     <div className="dropdown">
                     <div className="dropdown-toggle nav-link text-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        {userFrontuser.email}
+                        {userFrontuser.name}
                     </div>
                     <ul className="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1">
                         <li><Link className="dropdown-item drp" to="/account">Account</Link></li>

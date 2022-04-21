@@ -1,14 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import img from '../../images/Untitled(4).jpg'
-import Talk from 'talkjs';
-import { useEffect } from "react";
 
-// sendbird-uikit
 const Footerr = () => {
 
 
     return ( 
         <div className=" mt-5 pt-5">
+
+
 
             <div className="container mt-5 border-top">
             <footer className="pt-5">

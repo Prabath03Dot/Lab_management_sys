@@ -28,7 +28,8 @@ const MainHome = () => {
 <div> 
     
     {/* Navigatio Bar */}
-    <NavigationBar/>
+    {/* <NavigationBar/> */}
+    <NavBar/>
 
     {/* 2nd NavBar */}
     <div className="container col-xxl-8 px-4 py-5">
